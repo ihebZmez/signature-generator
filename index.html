@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.png" />
+  <title>Email Signature Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+  <script type="text/javascript">
+    let baseUrl = "https://raw.githubusercontent.com/ihebZm/generateur-signature-cfac-erp/main/public/logo/";
+
+    window.esgConfig = {
+      useCache: false,
+      baseUrl: baseUrl,
+      companies: [
+        {
+          name: "kibo",
+          url: "https://www.kibo.com",
+          color: "#ff3131",
+          socialIcons: {
+            instagram: "https://www.instagram.com/kibocommunication",
+            fb: "https://www.facebook.com/kibocommunication",
+            tiktok: "https://www.tiktok.com/@kibocommunication",
+            linkedin: "https://fr.linkedin.com/company/kibo-communication",
+          },
+          logo: baseUrl + "kibo_communication.png",
+        },
+        {
+          name: "kibo v2",
+          url: "https://www.kibo.com",
+          color: "#040B21",
+          socialIcons: {
+            instagram: "https://www.instagram.com/kibocommunication",
+            fb: "https://www.facebook.com/kibocommunication",
+            tiktok: "https://www.tiktok.com/@kibocommunication",
+            linkedin: "https://www.linkedin.com/company/kibo-communication",
+          },
+          logo: baseUrl + "v1_2_kibo.svg",
+        },
+        {
+          name: "embc",
+          url: "https://www.embc.com",
+          color: "#002F45",
+          socialIcons: {
+            instagram: "https://www.instagram.com/embc.tn",
+            fb: "https://www.facebook.com/embc.tn",
+            tiktok: "https://www.tiktok.com/@embc.tn",
+            linkedin: "https://www.linkedin.com/company/embc.tn",
+          },
+          logo: baseUrl + "v1_2_embc.png",
+        },
+        {
+          name: "hayserv",
+          url: "https://www.hayserv.tn",
+          color: "#261C57",
+          socialIcons: {
+            instagram: "https://www.instagram.com/hayserv.tn",
+            fb: "https://www.facebook.com/hayserv.tn",
+            tiktok: "https://www.tiktok.com/@hayserv.tn",
+            linkedin: "https://www.linkedin.com/company/hayserv.tn",
+          },
+          logo: baseUrl + "v1_2_hayserv.svg",
+        },
+        {
+          name: "juriclick",
+          url: "https://www.juriclick.tn",
+          color: "#394C45",
+          socialIcons: {
+            instagram: "https://www.instagram.com/juriclick.tn",
+            fb: "https://www.facebook.com/juriclick.tn",
+            tiktok: "https://www.tiktok.com/@juriclick.tn",
+            linkedin: "https://www.linkedin.com/company/juriclick.tn",
+          },
+          logo: baseUrl + "v1_2_juriclic.svg",
+        },
+      ],
+    };
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

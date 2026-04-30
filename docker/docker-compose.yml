@@ -1,0 +1,9 @@
+services:
+  vite_app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: vite_signature_app
+    ports:
+      - "8085:80" # 👈 change port here
+    restart: unless-stopped

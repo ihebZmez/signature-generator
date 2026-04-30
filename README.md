@@ -15,7 +15,7 @@ A Vue.js 3 application that generates professional email signatures with company
 1. Clone the repository:
 
    ```
-   git clone https://github.com/shazzad/signature-generator.git
+   git clone https://github.com/ihebZm/generateur-signature-cfac-erp.git
    ```
 
 2. Navigate to the project directory:
@@ -70,15 +70,6 @@ The built files will be in the `dist` directory, ready for deployment.
 
 You can further customize the app by modifying the Vue.js components in the `src` directory. The main signature generation logic can be found in the main component file.
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-[MIT License](LICENSE)
-
-## MY DOC
 ## exemple tutorial:
 
 https://www.youtube.com/watch?v=nR8E30Rszw4
@@ -87,4 +78,4 @@ https://www.youtube.com/watch?v=nR8E30Rszw4
 
 https://solamentecodigoshtmlbybcn.jimdofree.com/probador-de-html/
 
-## We must put the template in a form of a table so the gmail don't fuck up the designe
+## We must put the template in a form of a table so the gmail don't fuck up the design

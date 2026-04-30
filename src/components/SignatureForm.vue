@@ -2,7 +2,7 @@
   <form class="form">
     <div class="field field-select">
       <div class="field-label">Company</div>
-      <div class="field-desc">Options: AdColony, Appreciate, Digital Turbine or Fyber.</div>
+      <div class="field-desc">Change the signature template by selecting a company.</div>
       <div class="field-control">
         <select v-model="form.company" autocomplete="organization">
           <option v-for="c in companies" :key="c.name" :value="c.name">{{c.name}}</option>
@@ -87,7 +87,7 @@
 
     <div class="field field-submit">
         <button type="button" :title="btnTitle" :disabled="formValid === false" class="btn primary-btn" @click.prevent="copySignature()">{{ copySignatureBtnText }}</button>
-        <button type="button" :title="btnTitle" :disabled="formValid === false" class="btn secondary-btn" @click.prevent="copyHtml()">{{ copyHtmlBtnText }}</button>
+        <!-- <button type="button" :title="btnTitle" :disabled="formValid === false" class="btn secondary-btn" @click.prevent="copyHtml()">{{ copyHtmlBtnText }}</button> -->
     </div>
   </form>
 </template>
@@ -114,11 +114,39 @@ export default {
       // ✅ NEW
       jobMode: 'manual', // manual | list
       jobs: [
-        'CEO',
-        'CTO',
-        'Project Manager',
-        'Full Stack Developer',
-        'Designer'
+        'Chef de projet',
+        'IT Manager',
+        'Ingénieur Informatique',
+        'Directrice Générale Adjointe / Chef de Département Juridique',
+        'Adjointe Juridique',
+        'Membre du Conseil d\'Administration / Responsable Administratif',
+        'Responsable Formation',
+        'Co-founder & Managing Partner / CMO',
+        'Graphic Designer',
+        'Community Manager',
+        'Social Media Manager',
+        'CEO & Fondateur',
+        'Département Ressources Humaines',
+        'Département Commercial',
+        'CFAC GROUP',
+        'Département Marketing & Communication',
+        'Membre du Conseil d\'Administration / Chef de Département Marketing & Communication',
+        'Directrice Générale / Chef de Département Taxe',
+        'Membre du Conseil d\'Administration / Expert Comptable',
+        'Directeur Général Adjoint / Chef de Département Comptabilité',
+        'Responsable Management de la Qualité',
+        'Chef Comptable',
+        'Comptable',
+        'Comptable et Chargée RH',
+        'Contrôleur de Gestion',
+        'Auditeur',
+        'Auditrice',
+        'Expert Comptable',
+        'Responsable Commerciale',
+        'Chef de Département RH',
+        'Chargée RH & Paie Senior',
+        'Assistant RH & Paie',
+        'Assistante RH & Paie'
       ]
     }
   },
@@ -174,7 +202,7 @@ export default {
 
       const el = document.createElement('textarea');
 
-      el.value = element.$el.innerHTML;
+      el.value = element.$el.outerHTML;
       el.setAttribute('readonly', '');
       el.style.position = 'absolute';
       el.style.left = '-9999px';
@@ -221,28 +249,21 @@ export default {
     },
     officeError() {
       var value = (this.form.office || '').trim();
-      if ( ! value || value === '+' || ( ! this.officeBlured  && ! this.mobileBlured && ! this.companyAddressBlured) ) {
+      if (!value || value === '+' || (!this.officeBlured && !this.mobileBlured && !this.companyAddressBlured)) {
         return '';
       }
 
-      var phoneNumberPattern = /^\+?[0-9-]+$/;  
-      if ( phoneNumberPattern.test( value ) == false ) {
-        return 'Numbers only, use dashes to separate.';
-      }
-
+      // Accept any text, special characters, and spaces - no validation needed
       return '';
     },
+
     mobileError() {
       var value = (this.form.mobile || '').trim();
-      if ( ! value || value === '+' || ! this.mobileBlured ) {
+      if (!value || value === '+' || !this.mobileBlured) {
         return '';
       }
 
-      var phoneNumberPattern = /^\+?[0-9-]+$/;  
-      if ( phoneNumberPattern.test( value ) == false ) {
-        return 'Numbers only, use dashes to separate.';
-      }
-
+      // Accept any text, special characters, and spaces - no validation needed
       return '';
     },
     companyAddressError() {
@@ -260,9 +281,9 @@ export default {
     copySignatureBtnText() {
       return this.copiedSignature ? 'Copied' : 'Copy Signature'
     },
-    copyHtmlBtnText() {
-      return this.copiedHtml ? 'Copied' : 'Copy Html'
-    },
+    // copyHtmlBtnText() {
+    //   return this.copiedHtml ? 'Copied' : 'Copy Html'
+    // },
     formValid() {
       if ( ! (this.form.name || '').trim()) {
         return false;

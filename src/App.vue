@@ -4,7 +4,7 @@
       <div class="container">
         <div class="inner">
           <img src="@/assets/logo.png" alt="Logo" class="logo" />
-          <h1>Signature Generator - GROUP CFAC</h1>
+          <h1>Signature Generator - CFAC GROUP</h1>
         </div>
       </div>
     </header>
@@ -56,11 +56,11 @@ export default {
       useCache: window.esgConfig.useCache || true,
       companies: window.esgConfig.companies || [],
       form: {
-        company: "kibo",
-        name: "",
-        jobTitle: "",
-        office: "+",
-        mobile: "+",
+        company: "Company Name",
+        name: "Nom Prénom",
+        jobTitle: "Poste",
+        office: "+216 00 000 000",
+        mobile: "+216 00 000 000",
       },
     };
   },

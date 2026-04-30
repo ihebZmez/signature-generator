@@ -1,4 +1,4 @@
-<!-- © 2026 YourCompany. Template ID: {{ uniqueId }}. Unauthorized use prohibited. -->
+<!-- © 2026 Iheb Zmerli. Template ID: {{ uniqueId }}. Unauthorized use prohibited. -->
 <template>
   <div class="preview">
     <table
@@ -24,7 +24,7 @@
             <div style="
                 font-family: 'Brittany Signature', cursive;
                 font-weight: 400;
-                font-size: 30px;
+                font-size: 31px;
                 color: #000;
                 width: 216px;
                 height: 65px;
@@ -34,9 +34,9 @@
 
             <!-- JOB -->
             <div style="
-                font-size: 11px;
+                font-size: 13px;
                 margin-top: -10px;
-                color: var(--brand-color);
+                color: #231F20;
                 font-family: 'Poppins', light;
               ">
               {{ jobTitle }}
@@ -49,23 +49,37 @@
                   <td style="width: 20px; vertical-align: middle">
                     <a :href="'tel:' + office" target="_blank" rel="noopener noreferrer"
                       style="text-decoration: none; display: inline-block">
-                      <span :style="iconStyle">
-                        &#8203;
-                        <img
-                          src="https://raw.githubusercontent.com/ihebZm/generateur-signature-cfac-erp/main/public/images-template-icons/v2_10.png"
-                          alt="Phone"
-                          style="position: absolute; top: 50%; left: 50%; width: 11px; height: 11px; border: 0; transform: translate(-50%, -50%);"
-                        />
-                      </span>
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                          <tr>
+                            <td align="center" valign="middle"
+                                :style="{
+                                  width: '20px',
+                                  height: '20px',
+                                  background: companyColor,
+                                  borderRadius: '50%'
+                                }">
+
+                              <img
+                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_10.png"
+                                width="12"
+                                height="12"
+                                style="display:block; border:0;"
+                              />
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </a>
                   </td>
-                  <td style="padding-left: 10px; font-size: 8px; color: var(--brand-color); font-family: 'Poppins', light;">
+                  <td style="padding-left: 10px; font-size: 12px; color: #231F20; font-family: 'Poppins', light;">
                     {{ office }}
                   </td>
-                  <td style="padding: 0 10px; font-size: 8px; color: var(--brand-color); font-family: 'Poppins', light;">
+                  <td style="padding: 0 10px; font-size: 12px; color: #231F20; font-family: 'Poppins', light;">
                     |
                   </td>
-                  <td style="font-size: 8px; color: var(--brand-color); font-family: 'Poppins', light;">
+                  <td style="font-size: 12px; color: #231F20; font-family: 'Poppins', light;">
                     {{ mobile }}
                   </td>
                 </tr>
@@ -79,17 +93,31 @@
                   <td style="width: 20px; vertical-align: middle">
                     <a :href="company.url" target="_blank" rel="noopener noreferrer"
                       style="text-decoration: none; display: inline-block">
-                      <span :style="iconStyle">
-                        &#8203;
-                        <img
-                          src="https://raw.githubusercontent.com/ihebZm/generateur-signature-cfac-erp/main/public/images-template-icons/v2_11.png"
-                          alt="Website"
-                          style="position: absolute; top: 50%; left: 50%; width: 11px; height: 11px; border: 0; transform: translate(-50%, -50%);"
-                        />
-                      </span>
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                          <tr>
+                            <td align="center" valign="middle"
+                                :style="{
+                                  width: '20px',
+                                  height: '20px',
+                                  background: companyColor,
+                                  borderRadius: '50%'
+                                }">
+
+                              <img
+                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_11.png"
+                                width="12"
+                                height="12"
+                                style="display:block; border:0;"
+                              />
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </a>
                   </td>
-                  <td style="padding-left: 10px; font-size: 8px; color: var(--brand-color);" :style="{ color: companyColor }">
+                  <td style="padding-left: 10px; font-size: 12px; color: #231F20;">
                     {{ companyUrlReadable }}
                   </td>
                 </tr>
@@ -103,17 +131,31 @@
                   <td style="width: 20px; vertical-align: top">
                     <a :href="'https://maps.google.com/?q=' + encodeURIComponent(companyAddress)" target="_blank" rel="noopener noreferrer"
                       style="text-decoration: none; display: inline-block">
-                      <span :style="iconStyle">
-                        &#8203;
-                        <img
-                          src="https://raw.githubusercontent.com/ihebZm/generateur-signature-cfac-erp/main/public/images-template-icons/v2_12.png"
-                          alt="Location"
-                          style="position: absolute; top: 50%; left: 50%; width: 11px; height: 11px; border: 0; transform: translate(-50%, -50%);"
-                        />
-                      </span>
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                          <tr>
+                            <td align="center" valign="middle"
+                                :style="{
+                                  width: '20px',
+                                  height: '20px',
+                                  background: companyColor,
+                                  borderRadius: '50%'
+                                }">
+
+                              <img
+                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_12.png"
+                                width="12"
+                                height="12"
+                                style="display:block; border:0;"
+                              />
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </a>
                   </td>
-                  <td style="padding-left: 10px; font-size: 8px; color: var(--brand-color); font-family: 'Poppins', light;">
+                  <td style="padding-left: 10px; font-size: 12px; color: #231F20; font-family: 'Poppins', light;">
                     <span v-html="companyAddress"></span>
                   </td>
                 </tr>
@@ -129,7 +171,7 @@
             <img
               :src="companyLogo"
               :alt="company.name"
-              style="width: 170px; height: auto; border: 0; display: block; margin: 20px auto 0;"
+              style="width: 200px; height: auto; border: 0; display: block; margin: 5px auto 0;"
             />
 
             <!-- SOCIAL -->
@@ -145,7 +187,7 @@
                         <img
                           :src="icon.img"
                           :alt="icon.alt"
-                          style="position: absolute; top: 2px; left: 2px; width: 26px; height: 26px; border: 0;"
+                          style="position: absolute; top: 2px; left: 2px; width: 28px; height: 28px; border: 0;"
                         />
                       </span>
                     </a>
@@ -178,8 +220,8 @@ export default {
     iconStyle() {
       return {
         display: "inline-block",
-        width: "14px",
-        height: "14px",
+        width: "16px",
+        height: "16px",
         background: this.companyColor,
         borderRadius: "50%",
         position: "relative",
@@ -191,8 +233,8 @@ export default {
     socialStyle() {
       return {
         display: "inline-block",
-        width: "30px",
-        height: "30px",
+        width: "32px",
+        height: "32px",
         background: this.companyColor,
         borderRadius: "50%",
         position: "relative",
@@ -231,28 +273,31 @@ export default {
     },
 
     socialIcons() {
-      return [
+      const icons = [
         {
           link: this.company.socialIcons?.instagram || "#",
-          img: "https://raw.githubusercontent.com/ihebZm/generateur-signature-cfac-erp/main/public/images-template-icons/v1_4.png",
+          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v1_4.png",
           alt: "Instagram"
         },
         {
           link: this.company.socialIcons?.fb || "#",
-          img: "https://raw.githubusercontent.com/ihebZm/generateur-signature-cfac-erp/main/public/images-template-icons/v1_5.png",
+          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v1_5.png",
           alt: "Facebook"
         },
         {
           link: this.company.socialIcons?.tiktok || "#",
-          img: "https://raw.githubusercontent.com/ihebZm/generateur-signature-cfac-erp/main/public/images-template-icons/v1_6.png",
+          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v1_6.png",
           alt: "TikTok"
         },
         {
           link: this.company.socialIcons?.linkedin || "#",
-          img: "https://raw.githubusercontent.com/ihebZm/generateur-signature-cfac-erp/main/public/images-template-icons/v1_7.png",
+          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v1_7.png",
           alt: "LinkedIn"
         }
       ];
+
+      // Filter out icons where link is "#", null, undefined, or empty string
+      return icons.filter(icon => icon.link && icon.link.trim() !== "#" && icon.link.trim() !== "");
     }
   }
 };

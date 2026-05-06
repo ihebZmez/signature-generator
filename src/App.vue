@@ -18,6 +18,8 @@
                 :companies="companies"
                 :form="form"
                 :useCache="useCache"
+                :isDarkMode="isDarkMode"
+                @toggle-dark-mode="isDarkMode = !isDarkMode"
               />
               <SignatureIntegrations />
             </div>
@@ -30,6 +32,7 @@
                 :form="form"
                 ref="preview"
                 class="box"
+                :isDarkMode="isDarkMode"
               />
             </div>
           </div>
@@ -62,6 +65,7 @@ export default {
         office: "+216 00 000 000",
         mobile: "+216 00 000 000",
       },
+      isDarkMode: false,
     };
   },
 };

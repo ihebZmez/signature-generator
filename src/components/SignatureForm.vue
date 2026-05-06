@@ -87,7 +87,15 @@
 
     <div class="field field-submit">
         <button type="button" :title="btnTitle" :disabled="formValid === false" class="btn primary-btn" @click.prevent="copySignature()">{{ copySignatureBtnText }}</button>
-        <!-- <button type="button" :title="btnTitle" :disabled="formValid === false" class="btn secondary-btn" @click.prevent="copyHtml()">{{ copyHtmlBtnText }}</button> -->
+        <button 
+          type="button" 
+          :title="isDarkMode ? 'Switch to Light' : 'Switch to Dark'" 
+          :disabled="formValid === false" 
+          class="btn secondary-btn mode-toggle" 
+          @click.prevent="$emit('toggle-dark-mode')"
+        >
+          {{ isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode' }}
+        </button>
     </div>
   </form>
 </template>
@@ -99,7 +107,8 @@ export default {
   props: [
     'companies', 
     'form',
-    'useCache'
+    'useCache',
+    'isDarkMode'
   ],
   data() {
     return {
@@ -202,6 +211,7 @@ export default {
 
       const el = document.createElement('textarea');
 
+      // el.value = element.$el.innerHTML;
       el.value = element.$el.outerHTML;
       el.setAttribute('readonly', '');
       el.style.position = 'absolute';

@@ -1,6 +1,6 @@
 <!-- © 2026 Iheb Zmerli. Template ID: {{ uniqueId }}. Unauthorized use prohibited. -->
 <template>
-  <div class="preview">
+  <div class="preview" :class="{ 'dark-mode': isDarkMode }" style="padding: 20px; border-radius: 8px; background-color: #ffffff;">
     <table
       role="presentation"
       cellpadding="0"
@@ -8,7 +8,8 @@
       border="0"
       style="
         border-collapse: collapse;
-        width: 700px;
+        width: 670px;
+        height: 170px;
         max-width: 100%;
         font-family: Poppins, Arial, sans-serif;
         color: var(--brand-color);
@@ -18,24 +19,25 @@
       <tbody>
         <tr>
           <!-- LEFT SIDE -->
-          <td style="padding: 8px 10px; vertical-align: top; width: 260px">
+          <td style="padding: 8px 10px; vertical-align: top; width: 340px">
 
             <!-- NAME -->
-            <div style="
-                font-family: 'Brittany Signature', cursive;
+            <div class="signature-name" style="
+                font-family: Georgia, sans-serif;
                 font-weight: 400;
-                font-size: 31px;
+                font-size: 21px;
                 color: #000;
-                width: 216px;
-                height: 65px;
+                max-width: 350px;
+                width: 80%;
+                margin-bottom: 12px;
               ">
               {{ name }}
             </div>
 
             <!-- JOB -->
-            <div style="
+            <div class="signature-job" style="
                 font-size: 13px;
-                margin-top: -10px;
+                margin-bottom: 12px;
                 color: #231F20;
                 font-family: 'Poppins', light;
               ">
@@ -43,10 +45,10 @@
             </div>
 
             <!-- PHONES -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top: 10px">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top: 12px">
               <tbody>
                 <tr>
-                  <td style="width: 20px; vertical-align: middle">
+                  <td style="width: 16px; vertical-align: middle">
                     <a :href="'tel:' + office" target="_blank" rel="noopener noreferrer"
                       style="text-decoration: none; display: inline-block">
                         <table role="presentation" cellpadding="0" cellspacing="0" border="0">
@@ -54,16 +56,16 @@
                           <tr>
                             <td align="center" valign="middle"
                                 :style="{
-                                  width: '20px',
-                                  height: '20px',
+                                  width: '16px',
+                                  height: '16px',
                                   background: companyColor,
                                   borderRadius: '50%'
                                 }">
 
                               <img
                                 src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_10.png"
-                                width="12"
-                                height="12"
+                                width="10"
+                                height="10"
                                 style="display:block; border:0;"
                               />
 
@@ -73,13 +75,13 @@
                       </table>
                     </a>
                   </td>
-                  <td style="padding-left: 10px; font-size: 12px; color: #231F20; font-family: 'Poppins', light;">
+                  <td v-if="office" style="padding-left: 8px; font-size: 11px; color: #231F20; font-family: 'Poppins', light; white-space: nowrap;">
                     {{ office }}
                   </td>
-                  <td style="padding: 0 10px; font-size: 12px; color: #231F20; font-family: 'Poppins', light;">
+                  <td v-if="office && mobile" style="padding: 0 8px; font-size: 11px; color: #231F20; font-family: 'Poppins', light;">
                     |
                   </td>
-                  <td style="font-size: 12px; color: #231F20; font-family: 'Poppins', light;">
+                  <td v-if="mobile" style="font-size: 11px; color: #231F20; font-family: 'Poppins', light; white-space: nowrap;">
                     {{ mobile }}
                   </td>
                 </tr>
@@ -87,10 +89,10 @@
             </table>
 
             <!-- WEBSITE -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top: 10px">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top: 12px">
               <tbody>
                 <tr>
-                  <td style="width: 20px; vertical-align: middle">
+                  <td style="width: 16px; vertical-align: middle">
                     <a :href="company.url" target="_blank" rel="noopener noreferrer"
                       style="text-decoration: none; display: inline-block">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0">
@@ -98,16 +100,16 @@
                           <tr>
                             <td align="center" valign="middle"
                                 :style="{
-                                  width: '20px',
-                                  height: '20px',
+                                  width: '16px',
+                                  height: '16px',
                                   background: companyColor,
                                   borderRadius: '50%'
                                 }">
 
                               <img
                                 src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_11.png"
-                                width="12"
-                                height="12"
+                                width="10"
+                                height="10"
                                 style="display:block; border:0;"
                               />
 
@@ -117,7 +119,7 @@
                       </table>
                     </a>
                   </td>
-                  <td style="padding-left: 10px; font-size: 12px; color: #231F20;">
+                  <td style="padding-left: 8px; font-size: 11px; color: #231F20;">
                     {{ companyUrlReadable }}
                   </td>
                 </tr>
@@ -125,10 +127,10 @@
             </table>
 
             <!-- ADDRESS -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top: 10px">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top: 12px">
               <tbody>
                 <tr>
-                  <td style="width: 20px; vertical-align: top">
+                  <td style="width: 16px; vertical-align: top">
                     <a :href="'https://maps.google.com/?q=' + encodeURIComponent(companyAddress)" target="_blank" rel="noopener noreferrer"
                       style="text-decoration: none; display: inline-block">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0">
@@ -136,26 +138,25 @@
                           <tr>
                             <td align="center" valign="middle"
                                 :style="{
-                                  width: '20px',
-                                  height: '20px',
+                                  width: '16px',
+                                  height: '16px',
                                   background: companyColor,
                                   borderRadius: '50%'
                                 }">
 
                               <img
-                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_12.png"
-                                width="12"
-                                height="12"
+                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_13.png"
+                                width="10"
+                                height="10"
                                 style="display:block; border:0;"
                               />
-
                             </td>
                           </tr>
                         </tbody>
                       </table>
                     </a>
                   </td>
-                  <td style="padding-left: 10px; font-size: 12px; color: #231F20; font-family: 'Poppins', light;">
+                  <td style="padding-left: 8px; font-size: 11px; color: #231F20; font-family: 'Poppins', light;">
                     <span v-html="companyAddress"></span>
                   </td>
                 </tr>
@@ -165,21 +166,21 @@
           </td>
 
           <!-- RIGHT SIDE -->
-          <td style="vertical-align: top; width: 300px; text-align: center; padding: 7px 0;">
+          <td style="vertical-align: top; width: 260px; text-align: center; padding: 7px 0;">
 
             <!-- LOGO -->
             <img
               :src="companyLogo"
               :alt="company.name"
-              style="width: 200px; height: auto; border: 0; display: block; margin: 5px auto 0;"
+              style="width: 190px; height: auto; border: 0; display: block; margin: 4px auto 0;"
             />
 
             <!-- SOCIAL -->
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"
-              style="margin-top: 8px; margin-left: auto">
+              style="margin-top: 6px; margin-left: auto">
               <tbody>
                 <tr>
-                  <td v-for="icon in socialIcons" :key="icon.link" style="padding-right: 9px">
+                  <td v-for="icon in socialIcons" :key="icon.link" style="padding-right: 6px">
                     <a :href="icon.link" target="_blank" rel="noopener noreferrer"
                       style="text-decoration: none; display: inline-block">
                       <span :style="socialStyle">
@@ -187,7 +188,7 @@
                         <img
                           :src="icon.img"
                           :alt="icon.alt"
-                          style="position: absolute; top: 2px; left: 2px; width: 28px; height: 28px; border: 0;"
+                          style="position: absolute; top: 2px; left: 2px; width: 25px; height: 26px; border: 0;"
                         />
                       </span>
                     </a>
@@ -206,7 +207,7 @@
 <script>
 export default {
   name: "SignaturePreview",
-  props: ["companies", "form"],
+  props: ["companies", "form", "isDarkMode"],
 
   computed: {
     company() {
@@ -220,8 +221,8 @@ export default {
     iconStyle() {
       return {
         display: "inline-block",
-        width: "16px",
-        height: "16px",
+        width: "14px",
+        height: "14px",
         background: this.companyColor,
         borderRadius: "50%",
         position: "relative",
@@ -233,8 +234,8 @@ export default {
     socialStyle() {
       return {
         display: "inline-block",
-        width: "32px",
-        height: "32px",
+        width: "30px",
+        height: "30px",
         background: this.companyColor,
         borderRadius: "50%",
         position: "relative",
@@ -306,4 +307,87 @@ export default {
 <style>
 @import url('https://fonts.cdnfonts.com/css/brittany-signature');
 @import url('https://fonts.cdnfonts.com/css/poppins');
+@import url('https://fonts.cdnfonts.com/css/georgia');
+
+/* ─── DARK MODE (Manual Toggle + System Preference) ─── */
+.preview.dark-mode {
+  background-color: #1a1a1a !important;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.preview.dark-mode,
+.preview.dark-mode div,
+.preview.dark-mode td,
+.preview.dark-mode span,
+.preview.dark-mode font,
+.preview.dark-mode a {
+  color: #ffffff !important;
+}
+
+/* Icon circles → white in dark mode */
+.preview.dark-mode td[style*="border-radius: 50%"],
+.preview.dark-mode span[style*="border-radius: 50%"] {
+  background: #ffffff !important;
+}
+
+/* Icon images → dark (visible on white circles) */
+.preview.dark-mode td[style*="border-radius: 50%"] img,
+.preview.dark-mode span[style*="border-radius: 50%"] img {
+  filter: brightness(0) !important;
+}
+
+/* Logo stays original */
+.preview.dark-mode img[style*="width: 140px"] {
+  filter: none;
+}
+
+/* ─── MOBILE RESPONSIVENESS ─── */
+@media screen and (max-width: 480px) {
+  table[style*="width: 620px"] {
+    width: 100% !important;
+  }
+
+  td[style*="width: 340px"] {
+    width: 60% !important;
+    padding: 6px 8px !important;
+  }
+
+  td[style*="width: 260px"] {
+    width: 40% !important;
+    padding: 6px 0 !important;
+  }
+
+  .signature-name {
+    font-size: 22px !important;
+    height: auto !important;
+    line-height: 1.1 !important;
+  }
+
+  .signature-job {
+    font-size: 11px !important;
+    margin-top: 2px !important;
+  }
+
+  img[style*="width: 140px"] {
+    width: 100px !important;
+  }
+
+  td[style*="white-space: nowrap"] {
+    font-size: 10px !important;
+  }
+}
+
+/* ─── EMAIL CLIENT DARK MODE SUPPORT ─── */
+@media (prefers-color-scheme: dark) {
+  td[style*="border-radius: 50%"],
+  span[style*="border-radius: 50%"] {
+    background: #ffffff !important;
+  }
+
+  td[style*="border-radius: 50%"] img,
+  span[style*="border-radius: 50%"] img {
+    filter: brightness(0) !important;
+  }
+}
 </style>

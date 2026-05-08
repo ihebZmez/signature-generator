@@ -2,13 +2,13 @@
   <div id="integrations">
     <h2>Pour configurer la signature dans Gmail</h2>
     <span
-      >Vous pouvez demander à au service Marcketing ou bien au service IT de configurer
+      >Vous pouvez demander à au service IT ou bien au service Marcketing de configurer
       la signature pour vous:</span
     >
     <ol>
+      <li>support@cfacgroup.com</li>
       <li>houeida@kibocommunication.com</li>
       <li>khdija@kibocommunication.com</li>
-      <li>support@cfacgroup.com</li>
     </ol>
 
     <div class="instructions">

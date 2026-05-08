@@ -60,10 +60,11 @@ export default {
       companies: window.esgConfig.companies || [],
       form: {
         company: "Company Name",
-        name: "Nom Prénom",
-        jobTitle: "Poste",
+        name: "Name Surname",
+        jobTitle: "Job Title",
         office: "+216 00 000 000",
         mobile: "+216 00 000 000",
+        address: "Immeuble Narimane, Rue Chott Mariem, Montplaisir, 1073,Tunis, Tunisie",
       },
       isDarkMode: false,
     };

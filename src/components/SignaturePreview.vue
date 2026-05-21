@@ -19,7 +19,7 @@
       <tbody>
         <tr>
           <!-- LEFT SIDE -->
-          <td style="padding: 8px 10px; vertical-align: top; width: 340px">
+          <td style="padding: 8px 10px; vertical-align: top; width: auto; min-width: 340px;">
 
             <!-- NAME -->
             <div class="signature-name" style="
@@ -27,11 +27,12 @@
                 font-weight: 400;
                 font-size: 30px;
                 color: #000;
-                max-width: 350px;
-                width: 80%;
+                max-width: none;
+                width: auto;
+                white-space: nowrap;
                 margin-bottom: 12px;
               ">
-              {{ name }}
+                {{ name }}
             </div>
 
             <!-- JOB -->
@@ -166,13 +167,13 @@
           </td>
 
           <!-- RIGHT SIDE -->
-          <td style="vertical-align: top; width: 260px; text-align: center; padding: 7px 0;">
+          <td style="vertical-align: top; width: 260px; text-align: center; padding: 12px 0;">
 
             <!-- LOGO -->
             <img
               :src="companyLogo"
               :alt="company.name"
-              style="width: 210px; height: auto; border: 0; display: block; margin: 4px 52px 7px 52px;"
+              :style="logoStyle"
             />
 
             <!-- SOCIAL -->
@@ -199,6 +200,11 @@
               </tbody>
             </table>
 
+            <!-- LOGO -->
+            <img
+              src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/logo/v1_2_poweredByCfac.png"
+              style="width: 195px; height: auto; border: 0; display: block; margin: 15px 52px 7px 60px;"
+            />
           </td>
         </tr>
       </tbody>
@@ -235,6 +241,40 @@ export default {
 
     companyLogo() {
       return this.company.logo;
+    },
+
+    logoStyle() {
+      // Get dimensions from company config or use defaults
+      const width = this.company.logoWidth || 210;
+      const height = this.company.logoHeight || 'auto';
+      const margin = this.company.logoMargin || '4px 52px 7px 52px';
+      
+      // Build style object
+      const style = {
+        border: '0',
+        display: 'block',
+        margin: margin
+      };
+      
+      // Apply width
+      if (typeof width === 'number' || !isNaN(parseFloat(width))) {
+        style.width = typeof width === 'number' ? width + 'px' : width;
+      } else {
+        style.width = width;
+      }
+      
+      // Apply height (if specified and not 'auto')
+      if (height && height !== 'auto') {
+        if (typeof height === 'number' || !isNaN(parseFloat(height))) {
+          style.height = typeof height === 'number' ? height + 'px' : height;
+        } else {
+          style.height = height;
+        }
+      } else {
+        style.height = 'auto';
+      }
+      
+      return style;
     },
 
     companyUrlReadable() {
@@ -298,7 +338,7 @@ export default {
 @import url('https://fonts.cdnfonts.com/css/poppins');
 @import url('https://fonts.cdnfonts.com/css/georgia');
 
-/* ─── DARK MODE (Manual Toggle + System Preference) ─── */
+/* ─── MANUAL DARK MODE TOGGLE (Preview Only) ─── */
 .preview.dark-mode {
   background-color: #1a1a1a !important;
   padding: 20px;
@@ -314,21 +354,16 @@ export default {
   color: #ffffff !important;
 }
 
-/* Icon circles → white in dark mode */
+/* Icon circles → white in manual dark mode */
 .preview.dark-mode td[style*="border-radius: 50%"],
 .preview.dark-mode span[style*="border-radius: 50%"] {
-  background: #ffffff !important;
+  background: companyColor !important;
 }
 
 /* Icon images → dark (visible on white circles) */
 .preview.dark-mode td[style*="border-radius: 50%"] img,
 .preview.dark-mode span[style*="border-radius: 50%"] img {
   filter: brightness(0) !important;
-}
-
-/* Logo stays original */
-.preview.dark-mode img[style*="width: 140px"] {
-  filter: none;
 }
 
 /* ─── MOBILE RESPONSIVENESS ─── */
@@ -367,16 +402,43 @@ export default {
   }
 }
 
-/* ─── EMAIL CLIENT DARK MODE SUPPORT ─── */
+/* ─── GMAIL DARK MODE SUPPORT (WebKit based) ─── */
+/* This matches exactly how Gmail renders dark mode - using WebKit's color-scheme */
 @media (prefers-color-scheme: dark) {
-  td[style*="border-radius: 50%"],
-  span[style*="border-radius: 50%"] {
-    background: #ffffff !important;
+  /* Gmail's dark mode automatically inverts colors, but we need to preserve our circles */
+  .preview {
+    color-scheme: dark;
   }
-
+  
+  /* Preserve circular backgrounds - Gmail tries to invert them, force white */
+  td[style*="border-radius: 50%"],
+  span[style*="border-radius: 50%"],
+  td[style*="background:"] td[style*="border-radius: 50%"] {
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  
+  /* Make icon images dark/black on the white circles */
   td[style*="border-radius: 50%"] img,
-  span[style*="border-radius: 50%"] img {
+  span[style*="border-radius: 50%"] img,
+  td[style*="background:"] td[style*="border-radius: 50%"] img {
     filter: brightness(0) !important;
+    -webkit-filter: brightness(0) !important;
+  }
+  
+  /* Preserve original logo colors - Gmail dark mode tries to invert logos */
+  img[style*="width: 210px"],
+  img[style*="width: 195px"] {
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+  
+  /* Keep company logos visible - prevent Gmail's dark mode from breaking them */
+  img[src*="companyLogo"] {
+    filter: none !important;
+    -webkit-filter: none !important;
   }
 }
 </style>

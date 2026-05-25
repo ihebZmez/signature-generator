@@ -1,164 +1,231 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.png" />
+    <title>Email Signature Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="text/javascript">
+      let baseUrl =
+        "https://raw.githubusercontent.com/ihebZmez/signature-generator-cfac-group/main/public/logo/";
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/favicon.png" />
-  <title>Email Signature Generator</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-    rel="stylesheet" />
-  <script type="text/javascript">
-    let baseUrl = "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/logo/";
+      window.esgConfig = {
+        useCache: false,
+        baseUrl: baseUrl,
+        companies: [
+          {
+            name: "KIBO COMMUNICATION (v1)",
+            url: "https://www.kibocommunication.com",
+            color: "#ff3131",
+            socialIcons: {
+              instagram: "https://www.instagram.com/kibocommunication",
+              fb: "https://www.facebook.com/kibocommunication",
+              tiktok: "https://www.tiktok.com/@kibocommunication",
+              linkedin: "https://fr.linkedin.com/company/kibo-communication",
+            },
+            logo: baseUrl + "v1_2_kibo__v1.png",
+            // Standard version parameters
+            logoWidth: 180,
+            logoHeight: 80,
+            logoMargin: "4px 52px 7px 63px",
+            // Background version parameters (white background specific)
+            logoWidthBg: 160,
+            logoHeightBg: 70,
+            logoMarginBg: "4px 52px 7px 63px",
+            socialIconsMarginBg: "20px 0px 35px 42px",
+            logoPoweredBy: true,
+          },
+          {
+            name: "KIBO COMMUNICATION (v2)",
+            url: "https://www.kibocommunication.com",
+            color: "#040B21",
+            socialIcons: {
+              instagram: "https://www.instagram.com/kibocommunication",
+              fb: "https://www.facebook.com/kibocommunication",
+              tiktok: "https://www.tiktok.com/@kibocommunication",
+              linkedin: "https://www.linkedin.com/company/kibo-communication",
+            },
+            logo: baseUrl + "v1_2_kibo_v2.png",
+            // Standard version parameters
+            logoWidth: 200,
+            logoHeight: 100,
+            logoMargin: "4px 52px 3px 55px",
+            // Background version parameters (white background specific)
+            logoWidthBg: 180,
+            logoHeightBg: 90,
+            logoMarginBg: "4px 52px 3px 55px",
+            socialIconsMarginBg: "20px 0px 35px 42px",
+            logoPoweredBy: true,
+          },
+          {
+            name: "EMBC",
+            url: "https://www.eurombc.com",
+            color: "#002F45",
+            socialIcons: {
+              instagram: "https://www.instagram.com/embc.businesscenter/",
+              fb: "https://www.facebook.com/embc.businesscenter/",
+              tiktok: "https://www.tiktok.com/@embc.businesscenter",
+              linkedin:
+                "https://www.linkedin.com/company/embc-euromaghrab-business-center/posts/?feedView=all",
+            },
+            logo: baseUrl + "v1_2_embc.png",
+            // Standard version parameters
+            logoWidth: 165,
+            logoHeight: 45,
+            logoMargin: "4px 52px 7px 70px",
+            // Background version parameters (white background specific)
+            logoWidthBg: 145,
+            logoHeightBg: 35,
+            logoMarginBg: "4px 52px 7px 70px",
+            socialIconsMarginBg: "20px 0px 35px 42px",
+            logoPoweredBy: true,
+          },
+          {
+            name: "HAYSERV",
+            url: "https://www.hayserv.com",
+            color: "#261C57",
+            socialIcons: {
+              instagram: "https://www.instagram.com/hay.serv/",
+              fb: "https://www.facebook.com/Hayserv/",
+              tiktok: "https://www.tiktok.com/@hayserv",
+              linkedin: "https://www.linkedin.com/company/hayserv/",
+            },
+            logo: baseUrl + "v1_2_hayserv.png",
+            // Standard version parameters
+            logoWidth: 167,
+            logoHeight: 47,
+            logoMargin: "4px 40px 9px 71px",
+            // Background version parameters (white background specific)
+            logoWidthBg: 147,
+            logoHeightBg: 37,
+            logoMarginBg: "4px 40px 9px 71px",
+            socialIconsMarginBg: "20px 0px 35px 42px",
+            logoPoweredBy: true,
+          },
+          {
+            name: "JURICLICK",
+            url: "https://www.juriclick.com",
+            color: "#394C45",
+            socialIcons: {
+              instagram: "#",
+              fb: "https://www.facebook.com/juriclick/",
+              tiktok: "#",
+              linkedin:
+                "https://www.linkedin.com/company/juriclick/posts/?feedView=all",
+            },
+            logo: baseUrl + "v1_2_juriclick.png",
+            // Standard version parameters
+            logoWidth: 167,
+            logoHeight: 75,
+            logoMargin: "4px 52px 7px 71px",
+            // Background version parameters (white background specific)
+            logoWidthBg: 200,
+            logoHeightBg: 60,
+            logoMarginBg: "4px auto 7px 25px",
+            socialIconsMarginBg: "20px 0px 35px 42px",
+            logoPoweredBy: true,
+          },
+          {
+            name: "TRUST TRAINING PARTNERS",
+            url: "https://www.ttpcenter.com",
+            color: "#FF9900",
+            socialIcons: {
+              instagram: "https://www.instagram.com/trust.training.partners/",
+              fb: "https://www.facebook.com/trust.training.partners",
+              tiktok: "https://www.tiktok.com/@trust.training.partners",
+              linkedin:
+                "https://www.linkedin.com/company/trusttrainingpartners/posts/?feedView=all",
+            },
+            logo: baseUrl + "v1_2_ttp.png",
+            // Standard version parameters
+            logoWidth: 195,
+            logoHeight: 80,
+            logoMargin: "4px 52px 7px 57px",
+            // Background version parameters (white background specific)
+            logoWidthBg: 200,
+            logoHeightBg: 80,
+            logoMarginBg: "20px 0px 40px 5px",
+            socialIconsMarginBg: "20px 0px 35px 15px",
+            logoPoweredBy: true,
+          },
+          {
+            name: "CFAC GROUP",
+            url: "https://www.cfacgroup.com",
+            color: "#000000",
+            socialIcons: {
+              instagram: "https://www.instagram.com/cfac.group/",
+              fb: "https://www.facebook.com/CFAC.GROUP",
+              tiktok: "#",
+              linkedin:
+                "https://www.linkedin.com/company/cfacgroup/posts/?feedView=all",
+            },
+            logo: baseUrl + "v1_2_cfac_group.png",
+            // Standard version parameters
+            logoWidth: 210,
+            logoHeight: 60,
+            logoMargin: "4px 52px 7px 52px",
+            // Background version parameters (white background specific)
+            logoWidthBg: 200,
+            logoHeightBg: 60,
+            logoMarginBg: "4px 52px 7px 28px",
+            socialIconsMarginBg: "20px 0px 35px 42px",
+            logoPoweredBy: false,
+          },
+          {
+            name: "ACCONSELIA",
+            url: "https://www.acconselia.com",
+            color: "#1556A3",
+            socialIcons: {
+              instagram: "https://www.instagram.com/acconselia_",
+              fb: "https://www.facebook.com/acconselia",
+              linkedin: "https://www.linkedin.com/company/acconselia",
+            },
+            logo: baseUrl + "v1_2_acconselia.png",
+            // Standard version parameters
+            logoWidth: 210,
+            logoHeight: 70,
+            logoMargin: "4px 52px 1px 48px",
+            // Background version parameters (white background specific)
+            logoWidthBg: 200,
+            logoHeightBg: 60,
+            logoMarginBg: "4px 52px 1px 28px",
+            socialIconsMarginBg: "20px 0px 35px 42px",
+            logoPoweredBy: true,
+          },
+          {
+            name: "HUMANCE CAPITAL",
+            url: "https://www.humancecapital.com",
+            color: "#AD181E",
+            socialIcons: {
+              instagram: "https://www.instagram.com/humancecapital/",
+              fb: "https://www.facebook.com/humancecapital",
+              linkedin: "https://www.linkedin.com/company/humancecapital",
+            },
+            logo: baseUrl + "v1_2_humancecapital.png",
+            // Standard version parameters
+            logoWidth: 210,
+            logoHeight: 80,
+            logoMargin: "4px 52px 7px 47px",
+            // Background version parameters (white background specific)
+            logoWidthBg: 200,
+            logoHeightBg: 70,
+            logoMarginBg: "20px 0px 40px 0px",
+            socialIconsMarginBg: "20px 0px 35px 42px",
+            logoPoweredBy: true,
+          },
+        ],
+      };
+    </script>
+  </head>
 
-    window.esgConfig = {
-      useCache: false,
-      baseUrl: baseUrl,
-      companies: [
-        {
-          name: "KIBO COMMUNICATION (v1)",
-          url: "https://www.kibocommunication.com",
-          color: "#ff3131",
-          socialIcons: {
-            instagram: "https://www.instagram.com/kibocommunication",
-            fb: "https://www.facebook.com/kibocommunication",
-            tiktok: "https://www.tiktok.com/@kibocommunication",
-            linkedin: "https://fr.linkedin.com/company/kibo-communication",
-          },
-          logo: baseUrl + "v1_2_kibo__v1.png",
-          logoWidth: 180,  // Can be number (px) or string like "200px" or "50%"
-          logoHeight: 80,
-          logoMargin: "4px 52px 7px 63px"
-        },
-        {
-          name: "KIBO COMMUNICATION (v2)",
-          url: "https://www.kibocommunication.com",
-          color: "#040B21",
-          socialIcons: {
-            instagram: "https://www.instagram.com/kibocommunication",
-            fb: "https://www.facebook.com/kibocommunication",
-            tiktok: "https://www.tiktok.com/@kibocommunication",
-            linkedin: "https://www.linkedin.com/company/kibo-communication",
-          },
-          logo: baseUrl + "v1_2_kibo_v2.png",
-          logoWidth: 200,  // Can be number (px) or string like "200px" or "50%"
-          logoHeight: 100,
-          logoMargin: "4px 52px 3px 55px"
-        },
-        {
-          name: "EMBC",
-          url: "https://www.eurombc.com",
-          color: "#002F45",
-          socialIcons: {
-            instagram: "https://www.instagram.com/embc.businesscenter/",
-            fb: "https://www.facebook.com/embc.businesscenter/",
-            tiktok: "https://www.tiktok.com/@embc.businesscenter",
-            linkedin: "https://www.linkedin.com/company/embc-euromaghrab-business-center/posts/?feedView=all",
-          },
-          logo: baseUrl + "v1_2_embc.png",
-          logoWidth: 165,  // Can be number (px) or string like "200px" or "50%"
-          logoHeight: 45,
-          logoMargin: "4px 52px 7px 70px"
-        },
-        {
-          name: "HAYSERV",
-          url: "https://www.hayserv.com",
-          color: "#261C57",
-          socialIcons: {
-            instagram: "https://www.instagram.com/hay.serv/",
-            fb: "https://www.facebook.com/Hayserv/",
-            tiktok: "https://www.tiktok.com/@hayserv",
-            linkedin: "https://www.linkedin.com/company/hayserv/",
-          },
-          logo: baseUrl + "v1_2_hayserv.png",
-          logoWidth: 167,  // Can be number (px) or string like "200px" or "50%"
-          logoHeight: 47,
-          logoMargin: "4px 40px 9px 71px"
-        },
-        {
-          name: "JURICLICK",
-          url: "https://www.juriclick.com",
-          color: "#394C45",
-          socialIcons: {
-            instagram: "#",
-            fb: "https://www.facebook.com/juriclick/",
-            tiktok: "#",
-            linkedin: "https://www.linkedin.com/company/juriclick/posts/?feedView=all",
-          },
-          logo: baseUrl + "v1_2_juriclick.png",
-          logoWidth: 167,  // Can be number (px) or string like "200px" or "50%"
-          logoHeight: 75,
-          logoMargin: "4px 52px 7px 71px"
-        },
-        {
-          name: "TRUST TRAINING PARTNERS",
-          url: "https://www.ttpcenter.com",
-          color: "#FF9900",
-          socialIcons: {
-            instagram: "https://www.instagram.com/trust.training.partners/",
-            fb: "https://www.facebook.com/trust.training.partners",
-            tiktok: "https://www.tiktok.com/@trust.training.partners",
-            linkedin: "https://www.linkedin.com/company/trusttrainingpartners/posts/?feedView=all",
-          },
-          logo: baseUrl + "v1_2_ttp.png",
-          logoWidth: 195,  // Can be number (px) or string like "200px" or "50%"
-          logoHeight: 80,
-          logoMargin: "4px 52px 7px 57px"
-        },
-        {
-          name: "CFAC GROUP",
-          url: "https://www.cfacgroup.com",
-          color: "#000000",
-          socialIcons: {
-            instagram: "https://www.instagram.com/cfac.group/",
-            fb: "https://www.facebook.com/CFAC.GROUP",
-            tiktok: "#",
-            linkedin: "https://www.linkedin.com/company/cfacgroup/posts/?feedView=all",
-          },
-          logo: baseUrl + "v1_2_cfac_group.png",
-          logoWidth: 210,  // Can be number (px) or string like "200px" or "50%"
-          logoHeight: 60,
-          logoMargin: "4px 52px 7px 52px"
-        },
-        {
-          name: "ACCONSELIA",
-          url: "https://www.acconselia.com",
-          color: "#1556A3",
-          socialIcons: {
-            instagram: "https://www.instagram.com/acconselia_",
-            fb: "https://www.facebook.com/acconselia",
-            linkedin: "https://www.linkedin.com/company/acconselia",
-          },
-          logo: baseUrl + "v1_2_acconselia.png",
-          logoWidth: 210,  // Can be number (px) or string like "200px" or "50%"
-          logoHeight: 70,
-          logoMargin: "4px 52px 1px 50px"
-        },
-        {
-          name: "HUMANCE CAPITAL",
-          url: "https://www.humancecapital.com",
-          color: "#AD181E",
-          socialIcons: {
-            instagram: "https://www.instagram.com/humancecapital/",
-            fb: "https://www.facebook.com/humancecapital",
-            linkedin: "https://www.linkedin.com/company/humancecapital",
-          },
-          logo: baseUrl + "v1_2_humancecapital.png",
-          logoWidth: 210,  // Can be number (px) or string like "200px" or "50%"
-          logoHeight: 80,
-          logoMargin: "4px 52px 7px 47px"
-        },
-      ],
-    };
-  </script>
-</head>
-
-<body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.js"></script>
-</body>
-
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>

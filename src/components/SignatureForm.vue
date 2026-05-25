@@ -85,6 +85,31 @@
       </div>
     </div>
 
+    <div class="field field-checkbox">
+      <div class="field-label">Show Powered By Logo</div>
+      <div class="field-control">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" v-model="form.showPoweredBy" />
+          <span>Yes, show the logo</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field field-radio">
+      <div class="field-label">Signature Background Style</div>
+      <div class="field-desc">Choose between standard or white background style.</div>
+      <div class="field-control" style="display: flex; gap: 16px; margin-top: 8px;">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="radio" value="false" v-model="form.useWhiteBackground" />
+          <span>Standard Style</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="radio" value="true" v-model="form.useWhiteBackground" />
+          <span>White Background Style</span>
+        </label>
+      </div>
+    </div>
+
     <div class="field field-submit">
         <button type="button" :title="btnTitle" :disabled="formValid === false" class="btn primary-btn" @click.prevent="copySignature()">{{ copySignatureBtnText }}</button>
         <button 
@@ -119,6 +144,8 @@ export default {
       companyAddressBlured: false,
       copiedHtml: false,
       copiedSignature: false,
+      showPoweredBy: true,
+      useWhiteBackground: false,
 
       // ✅ NEW
       jobMode: 'manual', // manual | list
@@ -160,6 +187,13 @@ export default {
     }
   },
   mounted() {
+    if (this.form.showPoweredBy === undefined) {
+      this.$set(this.form, 'showPoweredBy', true);
+    }
+    // Add this to initialize useWhiteBackground
+    if (this.form.useWhiteBackground === undefined) {
+      this.$set(this.form, 'useWhiteBackground', false);
+    }
     if (this.useCache && localStorage.getItem('form')) {
       Object.assign(this.form, JSON.parse(localStorage.getItem('form')));
     }

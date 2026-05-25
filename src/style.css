@@ -1,43 +1,45 @@
 body {
 	margin: 0;
 	padding: 0;
-	font-size: 12px;
-	line-height: 20px;
-	color: #002848;
-	font-weight: 300;
-	background-color: #f8fbfe;
-	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #1e293b;
+	font-weight: 400;
+	background-color: #f0f4f8;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 .container {
 	margin: 0 auto;
-	padding: 0 20px;
-	max-width: 1080px;
+	padding: 0 24px;
+	max-width: 1200px;
 }
 
 h1 {
 	margin: 0;
-	font-size: 24px;
-	font-weight: 300;
-	line-height: 36px;
+	font-size: 28px;
+	font-weight: 600;
+	line-height: 1.3;
+	letter-spacing: -0.01em;
 }
 
 h2 {
-	margin: 28px 0 18px;
+	margin: 32px 0 20px;
 	font-size: 20px;
-	font-weight: 700;
-	line-height: 28px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: #0f172a;
 }
 
 ol {
 	margin: 0;
-	padding-left: 15px;
+	padding-left: 18px;
 }
 
 ol li {
-	margin-bottom: 5px;
+	margin-bottom: 8px;
 }
 
 ol li:last-child {
@@ -45,14 +47,15 @@ ol li:last-child {
 }
 
 .spacer {
-	height: 28px;
+	height: 32px;
 }
 
 .box {
-	border-radius: 20px;
-	padding: 28px 40px 24px;
-	background-color: #FFF;
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+	border-radius: 16px;
+	padding: 28px 32px 24px;
+	background-color: #ffffff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+	border: 1px solid #e2e8f0;
 }
 
 @media(max-width: 479px) {
@@ -63,78 +66,80 @@ ol li:last-child {
 
 /* Button */
 .btn {
-	font-size: 12px;
-	line-height: 16px;
-	color: #f15631;
-	font-weight: 700;
-	padding: 8px 16px;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	color: #3b82f6;
+	padding: 10px 20px;
 	position: relative;
-	border-radius: 4px;
+	border-radius: 8px;
 	letter-spacing: 0.01em;
-	background-color: #FFF;
-	transition: all .2s ease;
-	text-transform: uppercase;
-	border: 2px solid #f15631;
+	background-color: #ffffff;
+	transition: all 0.2s ease;
+	text-transform: none;
+	border: 1px solid #3b82f6;
+	cursor: pointer;
 }
 
 .btn:hover,
 .btn:active {
 	outline: none;
-	cursor: pointer;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .btn:disabled {
-	opacity: 0.8;
+	opacity: 0.6;
 	cursor: not-allowed;
+	transform: none;
 }
 
-/* .btn:active{
-    right: -2px;
-    bottom: -2px;
-} */
 .primary-btn {
-	color: #FFF;
-	background-color: #F15631;
+	color: #ffffff;
+	background-color: #3b82f6;
+	border-color: #3b82f6;
 }
 
 .primary-btn:hover,
 .primary-btn:active {
-	border-color: #fc7555;
-	background-color: #fc7555;
+	background-color: #2563eb;
+	border-color: #2563eb;
 }
 
 .secondary-btn {
-	color: #f15631;
-	background-color: #FFF;
+	color: #3b82f6;
+	background-color: #ffffff;
+	border-color: #3b82f6;
 }
 
 .secondary-btn:hover,
 .secondary-btn:active {
-	color: #fc7555;
-	border-color: #fc7555;
+	color: #2563eb;
+	border-color: #2563eb;
+	background-color: #eff6ff;
 }
 
 /* Header */
 .header {
-	color: #fff;
-	background-color: #163f5f;
-	background: linear-gradient(125.85deg, #214A6A 29.73%, #002848 98.42%);
+	color: #ffffff;
+	background: linear-gradient(135deg, #1e3a5f 0%, #0f2b45 100%);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header .inner {
-	padding: 20px 0 10px;
+	padding: 24px 0 16px;
 }
 
 @media (max-width: 767px) {
 	.header .inner h1 {
-		font-size: 20px;
+		font-size: 22px;
 	}
 }
 
 @media (min-width: 768px) {
 	.header .inner {
 		display: flex;
-		padding: 36px 0;
+		padding: 28px 0;
 		align-items: center;
 		justify-content: space-between;
 	}
@@ -145,12 +150,12 @@ ol li:last-child {
 }
 
 .header .logo .icon-text path {
-	fill: #FFF;
+	fill: #ffffff;
 }
 
 /* Main */
 .main {
-	margin: 24px 0 50px;
+	margin: 32px 0 64px;
 }
 
 .main .form-section {
@@ -164,7 +169,7 @@ ol li:last-child {
 
 @media (max-width: 919px) {
 	.main .preview-section {
-		margin-top: 20px;
+		margin-top: 24px;
 		overflow: hidden;
 		overflow-x: auto;
 	}
@@ -177,18 +182,21 @@ ol li:last-child {
 @media (min-width: 920px) {
 	.main .inner {
 		display: flex;
+		gap: 32px;
 	}
 
 	.main .form-section {
-		margin-right: 20px;
+		margin-right: 0;
+		flex: 1;
 	}
 
 	.main .preview-section {
-		max-width: 580px;
+		flex: 1;
+		max-width: none;
 	}
 
 	.preview-sticky {
-		top: 20px;
+		top: 24px;
 		position: sticky;
 	}
 }

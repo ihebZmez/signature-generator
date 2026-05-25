@@ -64,7 +64,7 @@
                                 }">
 
                               <img
-                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_10.png"
+                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/icons-remove-bg/1-phone.png"
                                 width="11"
                                 height="11"
                                 style="display:block; border:0;"
@@ -108,7 +108,7 @@
                                 }">
 
                               <img
-                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_11.png"
+                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/icons-remove-bg/2-website.png"
                                 width="11"
                                 height="11"
                                 style="display:block; border:0;"
@@ -146,7 +146,7 @@
                                 }">
 
                               <img
-                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_13.png"
+                                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/icons-remove-bg/3-location.png"
                                 width="11"
                                 height="11"
                                 style="display:block; border:0;"
@@ -191,7 +191,7 @@
                         <img
                           :src="icon.img"
                           :alt="icon.alt"
-                          style="position: absolute; top: 2px; left: 2px; width: 30px; height: 30px; border: 0; margin-top: 2px; margin-left: 1px"
+                          style="position: absolute; top: 5px; left: 4px; width: 26px; height: 26px; border: 0; margin-top: 2px; margin-left: 1px"
                         />
                       </span>
                     </a>
@@ -202,6 +202,7 @@
 
             <!-- LOGO -->
             <img
+              v-if="form.showPoweredBy"
               src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/logo/v1_2_poweredByCfac.png"
               style="width: 195px; height: auto; border: 0; display: block; margin: 15px 52px 7px 60px;"
             />
@@ -306,22 +307,22 @@ export default {
       const icons = [
         {
           link: this.company.socialIcons?.instagram || "#",
-          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v1_4.png",
+          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/icons-remove-bg/4-instagram.png",
           alt: "Instagram"
         },
         {
           link: this.company.socialIcons?.fb || "#",
-          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v1_5.png",
+          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/icons-remove-bg/5-facebook.png",
           alt: "Facebook"
         },
         {
           link: this.company.socialIcons?.tiktok || "#",
-          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v1_6.png",
+          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/icons-remove-bg/6-tiktok.png",
           alt: "TikTok"
         },
         {
           link: this.company.socialIcons?.linkedin || "#",
-          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v1_7.png",
+          img: "https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/icons-remove-bg/7-linkedin.png",
           alt: "LinkedIn"
         }
       ];

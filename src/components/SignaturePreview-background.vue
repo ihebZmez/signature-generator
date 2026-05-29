@@ -55,7 +55,7 @@
                       border-right: 2px dotted;
                     "
                     :style="{
-                      backgroundColor: companyColor + '13',
+                      backgroundColor: companyColorBgLeft,
                       borderRightColor: companyColor,
                     }"
                   >
@@ -66,12 +66,13 @@
                         style="
                           font-family: Georgia, serif;
                           font-weight: 500;
-                          font-size: 32px;
+                          font-size: 30px;
                           color: #1a1a1a;
                           margin-bottom: 8px;
                           letter-spacing: -0.5px;
-                          white-space: normal;
-                          word-wrap: break-word;
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
                         "
                         :style="{ color: companyColor }"
                       >
@@ -253,7 +254,7 @@
                                 :href="company.url"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style="color: #555; text-decoration: none"
+                                style="color: inherit; text-decoration: none"
                               >
                                 {{ companyUrlReadable }}
                               </a>
@@ -310,10 +311,10 @@
                               style="
                                 padding-left: 10px;
                                 font-size: 12px;
-                                color: #555;
                                 font-family: 'Poppins', Arial, sans-serif;
                                 line-height: 1.4;
                               "
+                              :style="{ color: isDarkMode ? '#ffffff' : '#555555' }"
                             >
                               <span v-html="companyAddress"></span>
                             </td>
@@ -332,17 +333,19 @@
                       padding: 10px 12px 16px 12px;
                       background-color: #fafafa;
                     "
-                    :style="{ backgroundColor: companyColor + '30' }"
+                    :style="{ backgroundColor: companyColorBgRight }"
                   >
                     <!-- CENTERED CONTAINER for logo + social icons -->
                     <div style="display: inline-block; text-align: center;">
                       <!-- LOGO -->
-                      <img
-                        :src="companyLogo"
-                        :alt="company.name"
-                        :style="logoStyle"
-                        style="max-width: 100%; height: auto; display: block; margin: 0 auto;"
-                      />
+                      <div :style="{ margin: logoMargin }">
+                        <img
+                          :src="companyLogo"
+                          :alt="company.name"
+                          :style="logoStyle"
+                          style="max-width: 100%; height: auto; display: block;"
+                        />
+                      </div>
 
                       <!-- DIVIDER -->
                       <div
@@ -427,19 +430,35 @@
                       </table>
                     </div>
 
-                    <!-- POWERED BY LOGO -->
-                    <img
-                      v-if="form.showPoweredBy"
-                      src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/logo/v1_2_poweredByCfac.png"
-                      style="
-                        width: 190px;
-                        height: auto;
-                        border: 0;
-                        display: block;
-                        margin: 15px auto 5px auto;
-                        opacity: 0.7;
-                      "
-                    />
+                    <!-- BOTTOM SECTION - POWERED BY + QR CODE aligned -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 2px auto 2px auto;">
+                      <!-- POWERED BY LOGO -->
+                      <img
+                        v-if="form.showPoweredBy"
+                        src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/logo/v1_2_poweredByCfac.png"
+                        :style="poweredByLogoStyle"
+                        style="border: 0; display: block; opacity: 0.8;"
+                      />
+
+                      <!-- QR CODE SECTION -->
+                      <div style="text-align: center;" v-if="form.showPoweredBy">
+                        <div style="
+                          display: inline-block;
+                          padding: 3px;
+                          border-radius: 16px;
+                          border: 1px solid;
+                          animation: borderColorChange 3s infinite;
+                        " :style="{ borderColor: companyColor }">
+                        <img 
+                          src="../../public/qr.png"
+                          alt="QR Code"
+                          width="40"
+                          height="40"
+                          style="display: block; border-radius: 4px;"
+                        />
+                      </div>
+                    </div>
+                  </div>
                   </td>
                 </tr>
               </tbody>
@@ -465,6 +484,14 @@ export default {
       return this.company.color || "#6f4e37";
     },
 
+    companyColorBgLeft() {
+      return this.company.colorBgLeft || "#e8c458";
+    },
+
+    companyColorBgRight() {
+      return this.company.colorBgRight || "#ab9f20";
+    },
+
     companyLogo() {
       return this.company.logo;
     },
@@ -472,7 +499,7 @@ export default {
     logoStyle() {
       const width = this.company.logoWidthBg || 210;
       const height = this.company.logoHeightBg || "auto";
-      const margin = this.company.logoMarginBg || "0 auto 10px auto";
+      const margin = this.company.logoMarginBg || "20px auto 10px auto";
 
       const style = {
         border: "0",
@@ -499,6 +526,14 @@ export default {
       return style;
     },
 
+    poweredByLogoStyle() {
+      return {
+        width: "100%",
+        maxWidth: "140px",
+        height: "auto"
+      };
+    },
+        
     socialIconsMarginBg() {
       return this.company.socialIconsMarginBg || "20px 0px 40px 0px";
     },
@@ -611,6 +646,11 @@ export default {
 /* ─── MOBILE ─── */
 /* Fix for long names on mobile */
 @media screen and (max-width: 480px) {
+  .powered-by-logo {
+    width: 100px !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
   table[width="670"] {
     width: 100% !important;
   }

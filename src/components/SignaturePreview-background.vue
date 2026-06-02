@@ -44,7 +44,7 @@
               :style="{ borderColor: companyColor }"
             >
               <tbody>
-                <tr>
+                <tr class="main-signature-row">
                   <!-- LEFT SIDE - Solid brand color background -->
                   <td
                     style="
@@ -66,13 +66,14 @@
                         style="
                           font-family: Georgia, serif;
                           font-weight: 500;
-                          font-size: 30px;
+                          font-size: 31px;
                           color: #1a1a1a;
                           margin-bottom: 8px;
                           letter-spacing: -0.5px;
                           white-space: nowrap;
                           overflow: hidden;
                           text-overflow: ellipsis;
+                          text-transform: uppercase;
                         "
                         :style="{ color: companyColor }"
                       >
@@ -83,17 +84,17 @@
                       <div
                         class="signature-job"
                         style="
-                          font-size: 13px;
-                          margin-bottom: 16px;
-                          color: #555;
+                          font-size: 14px;
+                          margin-bottom: 12px;
+                          color: #000;
                           font-family: 'Poppins', Arial, sans-serif;
                           font-weight: 500;
-                          background-color: rgba(0, 0, 0, 0.05);
                           display: inline-block;
                           padding: 5px 14px;
                           border-radius: 25px;
                           letter-spacing: 0.3px;
                         "
+                        :style="{ backgroundColor: companyColor + '40' }"
                       >
                         {{ jobTitle }}
                       </div>
@@ -335,113 +336,107 @@
                     "
                     :style="{ backgroundColor: companyColorBgRight }"
                   >
-                    <!-- CENTERED CONTAINER for logo + social icons -->
-                    <div style="display: inline-block; text-align: center;">
-                      <!-- LOGO -->
-                      <div :style="{ margin: logoMargin }">
-                        <img
-                          :src="companyLogo"
-                          :alt="company.name"
-                          :style="logoStyle"
-                          style="max-width: 100%; height: auto; display: block;"
-                        />
-                      </div>
-
-                      <!-- DIVIDER -->
-                      <div
-                        style="
-                          height: 1px;
-                          background: #e0e0e0;
-                          margin: 15px 0px;
-                        "
-                        :style="{ background: companyColor + '30' }"
-                      ></div>
-
-                      <!-- SOCIAL ICONS -->
-                      <table
-                        role="presentation"
-                        cellpadding="0"
-                        cellspacing="0"
-                        border="0"
-                        align="center"
-                        :style="{ margin: socialIconsMarginBg || '20px 0px 40px 0px' }"
-                      >
-                        <tbody>
-                          <tr>
-                            <td
-                              v-for="(icon, index) in socialIcons"
-                              :key="icon.link"
-                              :style="{
-                                paddingRight:
-                                  index === socialIcons.length - 1
-                                    ? '0px'
-                                    : '10px',
-                                verticalAlign: 'middle',
-                              }"
-                            >
-                              <a
-                                :href="icon.link"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style="
-                                  text-decoration: none;
-                                  display: inline-block;
-                                "
-                              >
-                                <table
-                                  role="presentation"
-                                  cellpadding="0"
-                                  cellspacing="0"
-                                  border="0"
-                                >
-                                  <tbody>
-                                    <tr>
-                                      <td
-                                        align="center"
-                                        valign="middle"
-                                        style="
-                                          width: 34px;
-                                          height: 34px;
-                                          background-color: #e8e8e8;
-                                          border-radius: 50%;
-                                          transition: all 0.2s ease;
-                                        "
-                                        :style="{ backgroundColor: companyColor }"
-                                      >
-                                        <img
-                                          :src="icon.img"
-                                          :alt="icon.alt"
-                                          width="20"
-                                          height="20"
-                                          style="
-                                            display: block;
-                                            border: 0;
-                                            margin: 0 auto;
-                                          "
-                                        />
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </a>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <!-- LOGO -->
+                    <div :style="{ margin: logoMargin }">
+                      <img
+                        :src="companyLogo"
+                        :alt="company.name"
+                        :style="logoStyle"
+                        style="max-width: 100%; height: auto; display: block; margin: 0 auto;"
+                      />
                     </div>
 
-                    <!-- BOTTOM SECTION - POWERED BY + QR CODE aligned -->
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 2px auto 2px auto;">
+                    <!-- DIVIDER -->
+                    <div
+                      style="
+                        height: 1px;
+                        background: #e0e0e0;
+                        margin: 15px 0px;
+                      "
+                      :style="{ background: companyColor + '30' }"
+                    ></div>
+
+                    <!-- SOCIAL ICONS -->
+                    <table
+                      role="presentation"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      align="center"
+                      style="margin: 20px auto 40px auto;"
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            v-for="(icon, index) in socialIcons"
+                            :key="icon.link"
+                            style="padding-right: 10px; vertical-align: middle;"
+                            :style="{ paddingRight: index === socialIcons.length - 1 ? '0px' : '10px' }"
+                          >
+                            <a
+                              :href="icon.link"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style="text-decoration: none; display: inline-block;"
+                            >
+                              <table
+                                role="presentation"
+                                cellpadding="0"
+                                cellspacing="0"
+                                border="0"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td
+                                      align="center"
+                                      valign="middle"
+                                      style="
+                                        width: 34px;
+                                        height: 34px;
+                                        background-color: #e8e8e8;
+                                        border-radius: 50%;
+                                        transition: all 0.2s ease;
+                                      "
+                                      :style="{ backgroundColor: companyColor }"
+                                    >
+                                      <img
+                                        :src="icon.img"
+                                        :alt="icon.alt"
+                                        width="20"
+                                        height="20"
+                                        style="
+                                          display: block;
+                                          border: 0;
+                                          margin: 0 auto;
+                                        "
+                                      />
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- BOTTOM SECTION - POWERED BY + QR CODE stacked -->
+                    <div style="margin-top: 20px;">
                       <!-- POWERED BY LOGO -->
                       <img
                         v-if="form.showPoweredBy"
                         src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/logo/v1_2_poweredByCfac.png"
                         :style="poweredByLogoStyle"
-                        style="border: 0; display: block; opacity: 0.8;"
+                        style="
+                          border: 0;
+                          display: block;
+                          opacity: 0.8;
+                          margin: 0 auto;
+                        "
                       />
 
                       <!-- QR CODE SECTION -->
-                      <div style="text-align: center;" v-if="form.showPoweredBy">
+                      <div style="text-align: center; margin-top: 8px;" v-if="form.showQrCode">
                         <div style="
                           display: inline-block;
                           padding: 3px;
@@ -449,16 +444,18 @@
                           border: 1px solid;
                           animation: borderColorChange 3s infinite;
                         " :style="{ borderColor: companyColor }">
-                        <img 
-                          src="../../public/qr.png"
-                          alt="QR Code"
-                          width="40"
-                          height="40"
-                          style="display: block; border-radius: 4px;"
-                        />
+                          <img 
+                            src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/qr.png"
+                            alt="QR Code"
+                            :style="qrCodeStyle"
+                            style="
+                              display: block;
+                              border-radius: 4px;
+                            "
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </td>
                 </tr>
               </tbody>
@@ -528,9 +525,20 @@ export default {
 
     poweredByLogoStyle() {
       return {
-        width: "100%",
+        width: "140px",
+        minWidth: "140px",
         maxWidth: "140px",
-        height: "auto"
+        height: "20px",
+        objectFit: "contain"
+      };
+    },
+
+    qrCodeStyle() {
+      return {
+        width: "29px",
+        minWidth: "29px",
+        maxWidth: "29px",
+        height: "24px"
       };
     },
         
@@ -675,7 +683,7 @@ export default {
   }
 
   /* Make left side stack on top on mobile */
-  .preview table tbody tr {
+  .preview .main-signature-row {
     display: flex;
     flex-direction: column;
   }

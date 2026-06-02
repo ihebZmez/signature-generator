@@ -31,6 +31,7 @@
                 width: auto;
                 white-space: nowrap;
                 margin-bottom: 12px;
+                text-transform: uppercase;
               ">
                 {{ name }}
             </div>
@@ -177,35 +178,106 @@
             />
 
             <!-- SOCIAL -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
-              <tbody>
-                <tr>
-                  <td v-for="(icon, index) in socialIcons" :key="icon.link" 
-                      :style="{ 
-                        paddingRight: (index === socialIcons.length - 1) ? '0px' : '9px',
-                        verticalAlign: 'middle' 
-                      }">
-                    <a :href="icon.link" target="_blank" rel="noopener noreferrer"
-                      style="text-decoration: none; display: inline-block; line-height: 0;">
-                      <span :style="socialStyle" style="display: inline-block; position: relative; width: 35px; height: 35px;">
-                        <img
-                          :src="icon.img"
-                          :alt="icon.alt"
-                          style="position: absolute; top: 5px; left: 4px; width: 26px; height: 26px; border: 0; margin-top: 2px; margin-left: 1px"
-                        />
-                      </span>
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div :style="{ margin: socialIconsMargin }">
+              <table
+                role="presentation"
+                cellpadding="0"
+                cellspacing="0"
+                border="0"
+                align="center"
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      v-for="(icon, index) in socialIcons"
+                      :key="icon.link"
+                      style="padding-right: 10px; vertical-align: middle;"
+                      :style="{ paddingRight: index === socialIcons.length - 1 ? '0px' : '10px' }"
+                    >
+                      <a
+                        :href="icon.link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style="text-decoration: none; display: inline-block;"
+                      >
+                        <table
+                          role="presentation"
+                          cellpadding="0"
+                          cellspacing="0"
+                          border="0"
+                        >
+                          <tbody>
+                            <tr>
+                              <td
+                                align="center"
+                                valign="middle"
+                                style="
+                                  width: 34px;
+                                  height: 34px;
+                                  background-color: #e8e8e8;
+                                  border-radius: 50%;
+                                  transition: all 0.2s ease;
+                                "
+                                :style="{ backgroundColor: companyColor }"
+                              >
+                                <img
+                                  :src="icon.img"
+                                  :alt="icon.alt"
+                                  width="20"
+                                  height="20"
+                                  style="
+                                    display: block;
+                                    border: 0;
+                                    margin: 0 auto;
+                                  "
+                                />
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <!-- LOGO -->
-            <img
-              v-if="form.showPoweredBy"
-              src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/logo/v1_2_poweredByCfac.png"
-              style="width: 195px; height: auto; border: 0; display: block; margin: 15px 52px 7px 60px;"
-            />
+            <!-- BOTTOM SECTION - POWERED BY + QR CODE stacked -->
+            <div style="margin-top: 20px;">
+              <!-- POWERED BY LOGO -->
+              <img
+                v-if="form.showPoweredBy"
+                src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/logo/v1_2_poweredByCfac.png"
+                :style="poweredByLogoStyle"
+                style="
+                  border: 0;
+                  display: block;
+                  opacity: 0.8;
+                  margin: 0 auto;
+                "
+              />
+
+              <!-- QR CODE SECTION -->
+              <div style="text-align: center; margin-top: 8px;" v-if="form.showQrCode">
+                <div style="
+                  display: inline-block;
+                  padding: 3px;
+                  border-radius: 16px;
+                  border: 1px solid;
+                  animation: borderColorChange 3s infinite;
+                " :style="{ borderColor: companyColor }">
+                  <img 
+                    src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/qr.png"
+                    alt="QR Code"
+                    :style="qrCodeStyle"
+                    style="
+                      display: block;
+                      border-radius: 4px;
+                    "
+                  />
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>
@@ -276,6 +348,29 @@ export default {
       }
       
       return style;
+    },
+
+    poweredByLogoStyle() {
+      return {
+        width: "140px",
+        minWidth: "140px",
+        maxWidth: "140px",
+        height: "20px",
+        objectFit: "contain"
+      };
+    },
+
+    qrCodeStyle() {
+      return {
+        width: "29px",
+        minWidth: "29px",
+        maxWidth: "29px",
+        height: "24px"
+      };
+    },
+        
+    socialIconsMargin() {
+      return this.company.socialIconsMargin || "20px 0px 40px 0px";
     },
 
     companyUrlReadable() {

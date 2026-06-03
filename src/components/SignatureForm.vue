@@ -93,8 +93,12 @@
           <span>Yes, show Powered By CFAC Group</span>
         </label>
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <input type="checkbox" v-model="form.showQrCode" />
-          <span>Yes, show QR Code</span>
+          <input type="checkbox" v-model="form.showQrCodeWebsite" />
+          <span>Yes, show QR Website</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" v-model="form.showQrCodeRateus" />
+          <span>Yes, show QR RateUs</span>
         </label>
       </div>
     </div>
@@ -149,7 +153,8 @@ export default {
       copiedHtml: false,
       copiedSignature: false,
       showPoweredBy: false,
-      showQrCode: false,
+      showQrCodeWebsite: false,
+      showQrCodeRateus: false,
       useWhiteBackground: false,
 
       // ✅ NEW
@@ -195,8 +200,11 @@ export default {
     if (this.form.showPoweredBy === undefined) {
       this.$set(this.form, 'showPoweredBy', false);
     }
-    if (this.form.showQrCode === undefined) {
-      this.$set(this.form, 'showQrCode', false);
+    if (this.form.showQrCodeWebsite === undefined) {
+      this.$set(this.form, 'showQrCodeWebsite', false);
+    }
+    if (this.form.showQrCodeRateus === undefined) {
+      this.$set(this.form, 'showQrCodeRateus', false);
     }
     // Add this to initialize useWhiteBackground
     if (this.form.useWhiteBackground === undefined) {

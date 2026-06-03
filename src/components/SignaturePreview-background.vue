@@ -53,6 +53,8 @@
                       width: 450px;
                       background-color: #f5f5f5;
                       border-right: 2px dotted;
+                      position: relative;
+                      overflow: hidden;
                     "
                     :style="{
                       backgroundColor: companyColorBgLeft,
@@ -172,7 +174,7 @@
                                 font-family: 'Poppins', Arial, sans-serif;
                               "
                             >
-                              {{ office }}
+                              <a :href="'tel:' + office" style="color: inherit; text-decoration: none;">{{ office }}</a>
                             </td>
                             <td
                               v-if="office && mobile"
@@ -192,7 +194,7 @@
                                 font-family: 'Poppins', Arial, sans-serif;
                               "
                             >
-                              {{ mobile }}
+                              <a :href="'tel:' + mobile" style="color: inherit; text-decoration: none;">{{ mobile }}</a>
                             </td>
                           </tr>
                         </tbody>
@@ -209,39 +211,41 @@
                         <tbody>
                           <tr>
                             <td style="width: 28px; vertical-align: middle">
-                              <table
-                                role="presentation"
-                                cellpadding="0"
-                                cellspacing="0"
-                                border="0"
-                              >
-                                <tbody>
-                                  <tr>
-                                    <td
-                                      align="center"
-                                      valign="middle"
-                                      style="
-                                        width: 26px;
-                                        height: 26px;
-                                        background-color: #e8e8e8;
-                                        border-radius: 50%;
-                                      "
-                                      :style="{ backgroundColor: companyColor }"
-                                    >
-                                      <img
-                                        src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_11.png"
-                                        width="13"
-                                        height="13"
+                              <a :href="company.url" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: inline-block;">
+                                <table
+                                  role="presentation"
+                                  cellpadding="0"
+                                  cellspacing="0"
+                                  border="0"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td
+                                        align="center"
+                                        valign="middle"
                                         style="
-                                          display: block;
-                                          border: 0;
-                                          margin: 0 auto;
+                                          width: 26px;
+                                          height: 26px;
+                                          background-color: #e8e8e8;
+                                          border-radius: 50%;
                                         "
-                                      />
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
+                                        :style="{ backgroundColor: companyColor }"
+                                      >
+                                        <img
+                                          src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_11.png"
+                                          width="13"
+                                          height="13"
+                                          style="
+                                            display: block;
+                                            border: 0;
+                                            margin: 0 auto;
+                                          "
+                                        />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </a>
                             </td>
                             <td
                               style="
@@ -265,63 +269,65 @@
                       </table>
 
                       <!-- ADDRESS -->
-                      <table
-                        role="presentation"
-                        cellpadding="0"
-                        cellspacing="0"
-                        border="0"
-                      >
-                        <tbody>
-                          <tr>
-                            <td style="width: 28px; vertical-align: top">
-                              <table
-                                role="presentation"
-                                cellpadding="0"
-                                cellspacing="0"
-                                border="0"
-                              >
-                                <tbody>
-                                  <tr>
-                                    <td
-                                      align="center"
-                                      valign="middle"
-                                      style="
-                                        width: 26px;
-                                        height: 26px;
-                                        background-color: #e8e8e8;
-                                        border-radius: 50%;
-                                      "
-                                      :style="{ backgroundColor: companyColor }"
-                                    >
-                                      <img
-                                        src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_13.png"
-                                        width="13"
-                                        height="13"
+                      <a :href="'https://maps.google.com/?q=' + encodeURIComponent(companyAddressText)" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: inline-block;">
+                        <table
+                          role="presentation"
+                          cellpadding="0"
+                          cellspacing="0"
+                          border="0"
+                        >
+                          <tbody>
+                            <tr>
+                              <td style="width: 28px; vertical-align: top">
+                                <table
+                                  role="presentation"
+                                  cellpadding="0"
+                                  cellspacing="0"
+                                  border="0"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td
+                                        align="center"
+                                        valign="middle"
                                         style="
-                                          display: block;
-                                          border: 0;
-                                          margin: 0 auto;
+                                          width: 26px;
+                                          height: 26px;
+                                          background-color: #e8e8e8;
+                                          border-radius: 50%;
                                         "
-                                      />
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                            <td
-                              style="
-                                padding-left: 10px;
-                                font-size: 12px;
-                                font-family: 'Poppins', Arial, sans-serif;
-                                line-height: 1.4;
-                              "
-                              :style="{ color: isDarkMode ? '#ffffff' : '#555555' }"
-                            >
-                              <span v-html="companyAddress"></span>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                                        :style="{ backgroundColor: companyColor }"
+                                      >
+                                        <img
+                                          src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/images-template-icons/v2_13.png"
+                                          width="13"
+                                          height="13"
+                                          style="
+                                            display: block;
+                                            border: 0;
+                                            margin: 0 auto;
+                                          "
+                                        />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                              <td
+                                style="
+                                  padding-left: 10px;
+                                  font-size: 12px;
+                                  font-family: 'Poppins', Arial, sans-serif;
+                                  line-height: 1.4;
+                                "
+                                :style="{ color: isDarkMode ? '#ffffff' : '#555555' }"
+                              >
+                                <span v-html="companyAddress"></span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </a>
                     </div>
                   </td>
 
@@ -333,17 +339,29 @@
                       text-align: center;
                       padding: 10px 12px 16px 12px;
                       background-color: #fafafa;
+                      position: relative;
+                      overflow: hidden;
                     "
                     :style="{ backgroundColor: companyColorBgRight }"
                   >
+                    <!-- Configurable spacer div -->
+                    <div :style="{ margin: divRightTopMargin }"></div>
+
                     <!-- LOGO -->
                     <div :style="{ margin: logoMargin }">
-                      <img
-                        :src="companyLogo"
-                        :alt="company.name"
-                        :style="logoStyle"
-                        style="max-width: 100%; height: auto; display: block; margin: 0 auto;"
-                      />
+                      <a 
+                        :href="company.url" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        style="display: block; text-decoration: none;"
+                      >
+                        <img
+                          :src="companyLogo"
+                          :alt="company.name"
+                          :style="logoStyle"
+                          style="max-width: 100%; height: auto; display: block; margin: 0 auto;"
+                        />
+                      </a>
                     </div>
 
                     <!-- DIVIDER -->
@@ -436,7 +454,7 @@
                       />
 
                       <!-- QR CODE SECTION -->
-                      <div style="text-align: center; margin-top: 8px;" v-if="form.showQrCode">
+                      <div style="text-align: center; margin-top: 8px;">
                         <div style="
                           display: inline-block;
                           padding: 3px;
@@ -452,6 +470,17 @@
                               display: block;
                               border-radius: 4px;
                             "
+                            v-if="form.showQrCodeWebsite"
+                          />
+                          <img 
+                            src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/qrRateus.png"
+                            alt="QR Rateus"
+                            :style="qrCodeStyle"
+                            style="
+                              display: block;
+                              border-radius: 4px;
+                            "
+                            v-if="form.showQrCodeRateus"
                           />
                         </div>
                       </div>
@@ -491,6 +520,10 @@ export default {
 
     companyLogo() {
       return this.company.logo;
+    },
+    
+    divRightTopMargin() {
+      return (this.company && this.company.divRightTopMargin) || "0px";
     },
 
     logoStyle() {
@@ -535,10 +568,10 @@ export default {
 
     qrCodeStyle() {
       return {
-        width: "29px",
-        minWidth: "29px",
-        maxWidth: "29px",
-        height: "24px"
+        width: "30px",
+        minWidth: "30px",
+        maxWidth: "30px",
+        height: "26px"
       };
     },
         
@@ -570,6 +603,10 @@ export default {
       const value =
         this.form.companyAddress?.trim() || this.company.address || "";
       return value.replace(/\s{2,}/g, "<br>");
+    },
+
+    companyAddressText() {
+      return this.form.companyAddress?.trim() || this.company.address || "";
     },
 
     socialIcons() {

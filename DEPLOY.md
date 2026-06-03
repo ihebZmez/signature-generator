@@ -9,8 +9,15 @@ scp -r dist docker ihebzmcfac@10.0.1.118:/home/ihebzmcfac/
 ## Step 3 — run on VM
 
 cd /opt/signature-generator-cfac-group
+
+if the folders exist :
+sudo rm -r dist
+sudo rm -r docker
+
+else do:
 mv /home/ihebzmcfac/dist /opt/signature-generator-cfac-group/
 mv /home/ihebzmcfac/docker /opt/signature-generator-cfac-group/
+cd docker/
 
 ## Step 4 — build application on vm
 

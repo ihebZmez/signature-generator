@@ -24,11 +24,6 @@
       <!-- ✅ RADIO SWITCH -->
       <div class="field-control" style="display:flex; gap:10px; margin-bottom:8px;">
         <label>
-          <input type="radio" value="manual" v-model="jobMode" />
-          Write
-        </label>
-
-        <label>
           <input type="radio" value="list" v-model="jobMode" />
           Choose
         </label>
@@ -77,12 +72,42 @@
     </div>
 
     <div class="field field-text">
-      <div class="field-label">Company Address</div>
-      <div class="field-desc">Enter the company address.</div>
-      <div class="field-error" v-show="companyAddressError" v-html="companyAddressError"></div>
+      <div class="field-label">Post Number</div>
+      <div class="field-desc">Enter post number.</div>
+      <div class="field-error" v-show="postError" v-html="postError"></div>
       <div class="field-control">
-        <input type="text" autocomplete="tel" v-model="form.companyAddress" v-on:blur="companyAddressBlured = true;" />
+        <input type="text" autocomplete="tel" v-model="form.post" v-on:blur="postBlured = true;" />
       </div>
+    </div>
+
+    <!-- ✅ RADIO SWITCH -->
+    <div class="field-control" style="display:flex; gap:10px; margin-bottom:8px;">
+      <label>
+        <input type="radio" value="list" v-model="companyAddressMode" />
+        Choose
+      </label>
+    </div>
+
+    <div class="field-error" v-show="companyAddressError" v-html="companyAddressError"></div>
+
+    <!-- ✅ INPUT MODE -->
+    <div class="field-control" v-if="companyAddressMode === 'manual'">
+      <input
+        type="text"
+        autocomplete="organization-title"
+        v-model="form.companyAddress"
+        @blur="companyAddressBlured = true;"
+      />
+    </div>
+
+    <!-- ✅ SELECT MODE -->
+    <div class="field-control" v-else>
+      <select v-model="form.companyAddress" @change="companyAddressBlured = true">
+        <option disabled value="">Select a company address</option>
+        <option v-for="address in companyAddresses" :key="address" :value="address">
+          {{ address }}
+        </option>
+      </select>
     </div>
 
     <div class="field field-checkbox">
@@ -93,12 +118,16 @@
           <span>Yes, show Powered By CFAC Group</span>
         </label>
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <input type="checkbox" v-model="form.showQrCodeWebsite" />
+          <input type="checkbox" v-model="form.showQrCodeWebsite" disabled />
           <span>Yes, show QR Website</span>
         </label>
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <input type="checkbox" v-model="form.showQrCodeRateus" />
+          <input type="checkbox" v-model="form.showQrCodeRateus" disabled />
           <span>Yes, show QR RateUs</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" v-model="form.showVCardQR" />
+          <span>Yes, show vCard QR Code (Contact)</span>
         </label>
       </div>
     </div>
@@ -149,50 +178,52 @@ export default {
       jobTitleBlured: false,
       officeBlured: false,
       mobileBlured: false,
+      postBlured: false,
       companyAddressBlured: false,
       copiedHtml: false,
       copiedSignature: false,
       showPoweredBy: false,
       showQrCodeWebsite: false,
       showQrCodeRateus: false,
+      showVCardQR: false,
       useWhiteBackground: false,
 
       // ✅ NEW
-      jobMode: 'manual', // manual | list
+      jobMode: 'list', // manual | list
       jobs: [
-        'Chef de projet',
+        'Project Manager',
         'IT Manager',
-        'Ingénieur Informatique',
-        'Directrice Générale Adjointe / Chef de Département Juridique',
-        'Adjointe Juridique',
-        'Membre du Conseil d\'Administration / Responsable Administratif',
-        'Responsable Formation',
-        'Co-founder & Managing Partner / CMO',
+        'Software Engineer',
+        'Managing Director',
+        'Legal Associate',
+        'Administratif manager',
+        'Training manager',
+        'Chief Marketing Officer',
         'Graphic Designer',
         'Community Manager',
         'Social Media Manager',
-        'CEO & Fondateur',
-        'Département Ressources Humaines',
-        'Département Commercial',
-        'CFAC GROUP',
-        'Département Marketing & Communication',
-        'Membre du Conseil d\'Administration / Chef de Département Marketing & Communication',
-        'Directrice Générale / Chef de Département Taxe',
-        'Membre du Conseil d\'Administration / Expert Comptable',
-        'Directeur Général Adjoint / Chef de Département Comptabilité',
-        'Responsable Management de la Qualité',
-        'Chef Comptable',
-        'Comptable',
-        'Comptable et Chargée RH',
-        'Contrôleur de Gestion',
-        'Auditeur',
-        'Auditrice',
-        'Expert Comptable',
-        'Responsable Commerciale',
-        'Chef de Département RH',
-        'Chargée RH & Paie Senior',
-        'Assistant RH & Paie',
-        'Assistante RH & Paie'
+        'Quality Manager',
+        'Chief Accountant',
+        'Accountant Manager',
+        'Accountant Associate',
+        'Senior Accountant Associate',
+        'Consultant',
+        'Chartered Public Accountant',
+        'ERP Support',
+        'Chef Sales officier',
+        'Chief HR Officier',
+        'Senior HR Associate',
+        'HR Associate',
+        'Auditor Associate',
+      ],
+
+      companyAddresses: [
+        '4th floor, Block A, Narimane Building, Chott Mariem Street, 1073 Montplaisir, Tunis, Tunisia',
+        '2nd floor, Block A, Narimane Building, Chott Mariem Street, 1073 Montplaisir, Tunis, Tunisia',
+        '5th floor, Block A, Narimane Building, Chott Mariem Street, 1073 Montplaisir, Tunis, Tunisia',
+        '4ème étage, Bloc A, Immeuble Narimane, Rue Chott Mariem, 1073 Montplaisir, Tunis, Tunisie',
+        '2ème étage, Bloc A, Immeuble Narimane, Rue Chott Mariem, 1073 Montplaisir, Tunis, Tunisie',
+        '5ème étage, Bloc A, Immeuble Narimane, Rue Chott Mariem, 1073 Montplaisir, Tunis, Tunisie'
       ]
     }
   },
@@ -205,6 +236,9 @@ export default {
     }
     if (this.form.showQrCodeRateus === undefined) {
       this.$set(this.form, 'showQrCodeRateus', false);
+    }
+    if (this.form.showVCardQR === undefined) {
+      this.$set(this.form, 'showVCardQR', false);
     }
     // Add this to initialize useWhiteBackground
     if (this.form.useWhiteBackground === undefined) {
@@ -284,7 +318,7 @@ export default {
   },
   computed: {
     nameError() {
-      if ( ! this.nameBlured && ! this.jobTitleBlured  && ! this.officeBlured  && ! this.mobileBlured && ! this.companyAddressBlured ) {
+      if ( ! this.nameBlured && ! this.jobTitleBlured  && ! this.officeBlured  && ! this.mobileBlured && ! this.postBlured && ! this.companyAddressBlured ) {
         return '';
       }
 
@@ -296,7 +330,7 @@ export default {
       return '';
     },
     jobTitleError() {
-      if ( ! this.jobTitleBlured && ! this.officeBlured  && ! this.mobileBlured && ! this.companyAddressBlured ) {
+      if ( ! this.jobTitleBlured && ! this.officeBlured  && ! this.mobileBlured && ! this.postBlured && ! this.companyAddressBlured ) {
         return '';
       }
 
@@ -309,17 +343,25 @@ export default {
     },
     officeError() {
       var value = (this.form.office || '').trim();
-      if (!value || value === '+' || (!this.officeBlured && !this.mobileBlured && !this.companyAddressBlured)) {
+      if (!value || value === '+' || (!this.officeBlured && !this.mobileBlured && !this.postBlured && !this.companyAddressBlured)) {
         return '';
       }
 
       // Accept any text, special characters, and spaces - no validation needed
       return '';
     },
-
     mobileError() {
       var value = (this.form.mobile || '').trim();
       if (!value || value === '+' || !this.mobileBlured) {
+        return '';
+      }
+
+      // Accept any text, special characters, and spaces - no validation needed
+      return '';
+    },
+    postError() {
+      var value = (this.form.post || '').trim();
+      if (!value || value === '+' || (!this.postBlured && !this.mobileBlured && !this.companyAddressBlured)) {
         return '';
       }
 

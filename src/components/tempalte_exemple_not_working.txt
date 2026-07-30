@@ -61,6 +61,27 @@
                       borderRightColor: companyColor,
                     }"
                   >
+                    <!-- Top-Left Corner Angle Design -->
+                    <div style="
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 0;
+                      height: 0;
+                      border-top: 30px solid;
+                      border-right: 30px solid transparent;
+                    " :style="{ borderTopColor: companyColor }"></div>
+                    
+                    <!-- Bottom-Left Corner Angle Design (optional) -->
+                    <div style="
+                      position: absolute;
+                      bottom: 0;
+                      left: 0;
+                      width: 0;
+                      height: 0;
+                      border-bottom: 30px solid;
+                      border-right: 30px solid transparent;
+                    " :style="{ borderBottomColor: companyColor + '40' }"></div>
                     <div style="padding: 5px 5px 5px 10px">
                       <!-- NAME -->
                       <div
@@ -68,9 +89,9 @@
                         style="
                           font-family: Georgia, serif;
                           font-weight: 500;
-                          font-size: 30px;
+                          font-size: 31px;
                           color: #1a1a1a;
-                          margin-bottom: 20px;
+                          margin-bottom: 8px;
                           letter-spacing: -0.5px;
                           white-space: nowrap;
                           overflow: hidden;
@@ -86,8 +107,8 @@
                       <div
                         class="signature-job"
                         style="
-                          font-size: 15px;
-                          margin-bottom: 20px;
+                          font-size: 14px;
+                          margin-bottom: 12px;
                           color: #000;
                           font-family: 'Poppins', Arial, sans-serif;
                           font-weight: 500;
@@ -110,7 +131,7 @@
                             #ddd 0%,
                             transparent 100%
                           );
-                          margin: 10px 0 25px 0;
+                          margin: 12px 0 14px 0;
                         "
                         :style="{
                           background:
@@ -126,7 +147,7 @@
                         cellpadding="0"
                         cellspacing="0"
                         border="0"
-                        style="margin-bottom: 30px"
+                        style="margin-bottom: 10px"
                       >
                         <tbody>
                           <tr>
@@ -179,7 +200,7 @@
                             <td
                               v-if="office && mobile"
                               style="
-                                padding: 0 4px;
+                                padding: 0 8px;
                                 font-size: 12px;
                                 color: #999;
                               "
@@ -196,16 +217,6 @@
                             >
                               <a :href="'tel:' + mobile" style="color: inherit; text-decoration: none;">{{ mobile }}</a>
                             </td>
-                            <td
-                              v-if="post"
-                              style="
-                                font-size: 12px;
-                                color: #333;
-                                font-family: 'Poppins', Arial, sans-serif;
-                              "
-                            >
-                              &nbsp;|&nbsp; Post :&nbsp;<a :href="'tel:' + post" style="color: inherit; text-decoration: none;">{{ post }}</a>
-                            </td>
                           </tr>
                         </tbody>
                       </table>
@@ -216,7 +227,7 @@
                         cellpadding="0"
                         cellspacing="0"
                         border="0"
-                        style="margin-bottom: 30px"
+                        style="margin-bottom: 10px"
                       >
                         <tbody>
                           <tr>
@@ -354,6 +365,27 @@
                     "
                     :style="{ backgroundColor: companyColorBgRight }"
                   >
+                    <!-- Top-Right Corner Angle Design (light/transparent) -->
+                    <div style="
+                      position: absolute;
+                      top: 0;
+                      right: 0;
+                      width: 0;
+                      height: 0;
+                      border-top: 30px solid;
+                      border-left: 30px solid transparent;
+                    " :style="{ borderTopColor: companyColor + '40' }"></div>
+                    
+                    <!-- Bottom-Right Corner Angle Design (solid company color) -->
+                    <div style="
+                      position: absolute;
+                      bottom: 0;
+                      right: 0;
+                      width: 0;
+                      height: 0;
+                      border-bottom: 30px solid;
+                      border-left: 30px solid transparent;
+                    " :style="{ borderBottomColor: companyColor }"></div>
                     <!-- Configurable spacer div -->
                     <div :style="{ margin: divRightTopMargin }"></div>
 
@@ -391,7 +423,7 @@
                       cellspacing="0"
                       border="0"
                       align="center"
-                      style="margin: 15px auto 10px auto;"
+                      style="margin: 20px auto 40px auto;"
                     >
                       <tbody>
                         <tr>
@@ -463,43 +495,18 @@
                         "
                       />
 
-                      <!-- QR CODE SECTION - Dynamic vCard QR -->
-                      <div style="text-align: center; margin-top: 1px;">
+                      <!-- QR CODE SECTION -->
+                      <div style="text-align: center; margin-top: 8px;" v-if="form.showQrCode">
                         <div style="
                           display: inline-block;
+                          padding: 3px;
                           border-radius: 16px;
+                          border: 1px solid;
+                          animation: borderColorChange 3s infinite;
                         " :style="{ borderColor: companyColor }">
                           <img 
-                            v-if="form.showVCardQR && vCardQRCode"
-                            :src="vCardQRCode"
-                            alt="vCard QR Code - Scan to save contact"
-                            :style="vCardQRCodeStyle"
-                            style="
-                              display: block;
-                              border-radius: 0px;
-                            "
-                            :key="qrGenerationKey"
-                          />
-                          <div 
-                            v-else-if="form.showVCardQR && !vCardQRCode"
-                            style="width:50px;height:50px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:8px;color:#999;"
-                          >
-                            Loading...
-                          </div>
-                          <img 
-                            v-if="form.showQrCodeWebsite"
                             src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/qr.png"
                             alt="QR Code"
-                            :style="qrCodeStyle"
-                            style="
-                              display: block;
-                              border-radius: 4px;
-                            "
-                          />
-                          <img 
-                            v-if="form.showQrCodeRateus"
-                            src="https://raw.githubusercontent.com/ihebZmez/signature-generator/main/public/qrRateus.png"
-                            alt="QR Rateus"
                             :style="qrCodeStyle"
                             style="
                               display: block;
@@ -521,18 +528,9 @@
 </template>
 
 <script>
-import QRCode from 'qrcode';
-
 export default {
   name: "SignaturePreview",
   props: ["companies", "form", "isDarkMode"],
-
-  data() {
-    return {
-      vCardQRCode: null,
-      qrGenerationKey: 0 // Force re-render when changed
-    };
-  },
 
   computed: {
     company() {
@@ -560,9 +558,9 @@ export default {
     },
 
     logoStyle() {
-      const width = this.company.logoWidthBg || 190;
+      const width = this.company.logoWidthBg || 210;
       const height = this.company.logoHeightBg || "auto";
-      const margin = this.company.logoMarginBg || "10px auto 5px auto";
+      const margin = this.company.logoMarginBg || "20px auto 10px auto";
 
       const style = {
         border: "0",
@@ -601,19 +599,10 @@ export default {
 
     qrCodeStyle() {
       return {
-        width: "31px",
-        minWidth: "31px",
-        maxWidth: "31px",
-        height: "31px"
-      };
-    },
-
-    vCardQRCodeStyle() {
-      return {
-        width: "145px",
-        minWidth: "145px",
-        maxWidth: "145px",
-        height: "145px"
+        width: "30px",
+        minWidth: "30px",
+        maxWidth: "30px",
+        height: "26px"
       };
     },
         
@@ -641,10 +630,6 @@ export default {
       return this.form.mobile || "";
     },
 
-    post() {
-      return this.form.post || "";
-    },
-
     companyAddress() {
       const value =
         this.form.companyAddress?.trim() || this.company.address || "";
@@ -653,45 +638,6 @@ export default {
 
     companyAddressText() {
       return this.form.companyAddress?.trim() || this.company.address || "";
-    },
-
-    // Generate vCard string in version 3.0 format with proper encoding
-    vCardString() {
-      const name = this.name || "";
-      const jobTitle = this.jobTitle || "";
-      const companyName = this.company.name || "";
-      const office = this.office || "";
-      const mobile = this.mobile || "";
-      const post = this.post || "";
-      const email = this.company.email || "";
-
-      // Skip if no useful data
-      if (!name && !jobTitle && !companyName && !office && !mobile && !post && !email) {
-        return null;
-      }
-
-      // Split name into first and last
-      const nameParts = name.trim().split(' ');
-      const lastName = nameParts.pop() || '';
-      const firstName = nameParts.join(' ') || '';
-
-      let vCard = 'BEGIN:VCARD\r\n';
-      vCard += 'VERSION:3.0\r\n';
-      vCard += `FN:${this.escapeVCardString(name)}\r\n`;
-      vCard += `N:${this.escapeVCardString(lastName)};${this.escapeVCardString(firstName)};;;\r\n`;
-      
-      if (jobTitle) vCard += `TITLE:${this.escapeVCardString(jobTitle)}\r\n`;
-      if (companyName) vCard += `ORG:${this.escapeVCardString(companyName)}\r\n`;
-      if (office) vCard += `TEL;TYPE=WORK,VOICE:${office}\r\n`;
-      if (mobile) vCard += `TEL;TYPE=CELL,VOICE:${mobile}\r\n`;
-      if (post) vCard += `TEL;TYPE=WORK;X-SUBTYPE=Post:${post}\r\n`;
-      if (email) vCard += `EMAIL;TYPE=WORK:${email}\r\n`;
-      
-      vCard += 'REV:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z\r\n';
-      vCard += 'END:VCARD\r\n';
-
-      console.log('Generated vCard:', vCard); // Debug log
-      return vCard;
     },
 
     socialIcons() {
@@ -724,110 +670,6 @@ export default {
       );
     },
   },
-
-  watch: {
-    // Watch all relevant data sources
-    'form.name': {
-      handler() { this.regenerateQRCode(); },
-      deep: true
-    },
-    'form.jobTitle': {
-      handler() { this.regenerateQRCode(); },
-      deep: true
-    },
-    'form.office': {
-      handler() { this.regenerateQRCode(); },
-      deep: true
-    },
-    'form.mobile': {
-      handler() { this.regenerateQRCode(); },
-      deep: true
-    },
-    'form.post': {
-      handler() { this.regenerateQRCode(); },
-      deep: true
-    },
-    'form.company': {
-      handler() { 
-        setTimeout(() => this.regenerateQRCode(), 100);
-      },
-      deep: true
-    },
-    'form.showVCardQR': {
-      handler(newVal) {
-        if (newVal) {
-          this.regenerateQRCode();
-        } else {
-          this.vCardQRCode = null;
-        }
-      },
-      immediate: true
-    },
-    company: {
-      handler() {
-        this.regenerateQRCode();
-      },
-      deep: true
-    }
-  },
-
-  mounted() {
-    this.regenerateQRCode();
-  },
-
-  methods: {
-    escapeVCardString(str) {
-      if (!str) return '';
-      // Escape special characters in vCard
-      return String(str).replace(/[;, \\"]/g, function(match) {
-        if (match === ';') return '\\;';
-        if (match === ',') return '\\,';
-        if (match === '\\') return '\\\\';
-        if (match === '"') return '\\"';
-        return match;
-      });
-    },
-
-    async regenerateQRCode() {
-      if (!this.form.showVCardQR) {
-        this.vCardQRCode = null;
-        return;
-      }
-
-      // Small delay to ensure all data is updated
-      await this.$nextTick();
-      
-      const vCardData = this.vCardString;
-      
-      if (!vCardData || vCardData === 'BEGIN:VCARD\r\nVERSION:3.0\r\nEND:VCARD\r\n') {
-        console.log('No vCard data to generate');
-        this.vCardQRCode = null;
-        return;
-      }
-
-      try {
-        // Force a new key to ensure re-render
-        this.qrGenerationKey++;
-        
-        const qrCodeDataURL = await QRCode.toDataURL(vCardData, {
-          errorCorrectionLevel: 'H', // High error correction for better scanning
-          margin: 2,
-          width: 200,
-          type: 'image/png',
-          color: {
-            dark: '#000000',
-            light: '#FFFFFF'
-          }
-        });
-        
-        this.vCardQRCode = qrCodeDataURL;
-        console.log('vCard QR Code generated successfully');
-      } catch (error) {
-        console.error('Error generating vCard QR code:', error);
-        this.vCardQRCode = null;
-      }
-    }
-  }
 };
 </script>
 
@@ -901,7 +743,7 @@ export default {
   }
 
   .signature-name {
-    font-size: 18px !important;
+    font-size: 20px !important;
     white-space: normal !important;
     word-wrap: break-word !important;
     line-height: 1.2 !important;
